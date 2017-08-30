@@ -4,14 +4,21 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class VendingMachineTest {
+	
+	private VendingMachine underTest;
 
 	@Before
 	public void setUp() throws Exception {
+		underTest = new VendingMachine();
 	}
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void shouldReturnQuarterValue() {
+		Coin quarter = new Coin(4, 4);
+		
+		double result = 0.25;
+		
+		assertEquals(result, underTest.identifyCoin(quarter), 0.00);
 	}
 
-}
+} 
