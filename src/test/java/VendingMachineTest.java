@@ -38,4 +38,13 @@ public class VendingMachineTest {
 		
 		assertEquals(result, underTest.identifyCoin(nickel), 0);
 	}
+	
+	@Test
+	public void shouldReturnPennyValue() {
+		Coin penny = new Coin(2, 2);
+		
+		double result = 0.01;
+		
+		assertEquals(result, underTest.identifyCoin(penny), 0);
+	}
 } 

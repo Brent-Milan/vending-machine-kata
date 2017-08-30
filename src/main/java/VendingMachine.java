@@ -12,7 +12,10 @@ public class VendingMachine {
 			return 0.10;
 		} if(size == 3 && weight == 3) {
 			return 0.05;
+		} if (size == 2 && weight == 2) {
+			return 0.01;
 		}
+		
 		return 0.00;
 	}
 	
