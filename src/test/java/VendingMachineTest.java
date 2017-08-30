@@ -18,7 +18,7 @@ public class VendingMachineTest {
 		
 		double result = 0.25;
 		
-		assertEquals(result, underTest.identifyCoin(quarter), 0.00);
+		assertEquals(result, underTest.identifyCoin(quarter), 0);
 	}
 	
 	@Test 
@@ -28,7 +28,14 @@ public class VendingMachineTest {
 		double result = 0.10;
 		
 		assertEquals(result, underTest.identifyCoin(dime), 0);
+	} 
+	 
+	@Test
+	public void shouldReturnNickelValue() {
+		Coin nickel = new Coin(3, 3);
+		
+		double result = .05;
+		
+		assertEquals(result, underTest.identifyCoin(nickel), 0);
 	}
-	
-
 } 
