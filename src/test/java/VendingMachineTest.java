@@ -1,5 +1,7 @@
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -47,4 +49,26 @@ public class VendingMachineTest {
 		
 		assertEquals(result, underTest.identifyCoin(penny), 0);
 	}
+	
+	@Test
+	public void shouldReturnExpectedArrayListOfCoins() {
+		ArrayList<Coin> expected = new ArrayList<Coin>();
+		
+		Coin penny = new Coin(2, 2);
+		Coin nickel = new Coin(3, 3);
+		Coin dime = new Coin(1, 1);
+		Coin quarter = new Coin(4, 4);
+		
+		expected.add(penny);
+		expected.add(nickel);
+		expected.add(dime);
+		expected.add(quarter);
+		
+		assertEquals(expected, underTest.queueCoins(penny, nickel, dime, quarter));
+	}
+	
+//	@Test
+//	public void ShouldReturnTotalOfCoinValues() {
+//		Coin[] coins = new ArrayList();
+//	}
 } 

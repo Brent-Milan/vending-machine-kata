@@ -1,6 +1,8 @@
+import java.util.ArrayList;
 
 public class VendingMachine {
 
+	private ArrayList<Coin> coins = new ArrayList<Coin>();
 	
 	public double identifyCoin(Coin coin) {
 		int size = coin.getSize();
@@ -19,6 +21,18 @@ public class VendingMachine {
 		return 0.00;
 	}
 	
+	public void addCoin(Coin coin) {
+		coins.add(coin);
+	}
+	
+	public ArrayList<Coin> queueCoins(Coin... coinsAsArray) {
+
+		for(int index = 0; index < coinsAsArray.length; index++) {
+			coins.add(coinsAsArray[index]);
+		}
+		
+		return coins;
+	}
 	
 	
 }
