@@ -20,5 +20,15 @@ public class VendingMachineTest {
 		
 		assertEquals(result, underTest.identifyCoin(quarter), 0.00);
 	}
+	
+	@Test 
+	public void shouldReturnDimeValue() {
+		Coin dime = new Coin(1, 1); 
+			
+		double result = 0.10;
+		
+		assertEquals(result, underTest.identifyCoin(dime), 0);
+	}
+	
 
 } 
