@@ -55,7 +55,7 @@ public class VendingMachine {
 			total += identifyCoin(current);
 		}
 		return total;
-	}   
+	}    
 	
 	
 }

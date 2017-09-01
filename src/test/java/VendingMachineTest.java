@@ -71,7 +71,20 @@ public class VendingMachineTest {
 		ArrayList<Coin> coinsList = createArrayWithOneOfEachCoinType();
 		
 		assertEquals(00.41, underTest.calcTotalValueOfCoinsInQueue(coinsList), .001);
-	}   
+	} 
+	
+	public void shouldCalculateValueOfGivenCoinsTo1() {
+		ArrayList<Coin> coins = new ArrayList<Coin>();
+		
+		Coin penny = generatePenny();
+		Coin nickel = generateNickel();
+		Coin dime = generateDime();
+		Coin quarter = generateQuarter();
+		
+		coins = underTest.queueCoins(quarter,quarter, dime, dime, dime, nickel, nickel, nickel, penny, penny, penny, penny, penny);
+		
+		assertEquals(1.00, underTest.calcTotalValueOfCoinsInQueue(coins), 0);
+	}
 	
 	private Coin generateQuarter() {
 		Coin quarter = new Coin(24.26, 5.67);
@@ -109,9 +122,4 @@ public class VendingMachineTest {
 		return coins;
 	} 
 	
-	
-//	@Test
-//	public void ShouldReturnTotalOfCoinValues() {
-//		Coin[] coins = new ArrayList();
-//	}
 } 
