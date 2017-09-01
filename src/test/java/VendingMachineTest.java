@@ -16,7 +16,7 @@ public class VendingMachineTest {
 
 	@Test
 	public void shouldReturnQuarterValue() {
-		Coin quarter = new Coin(24.26, 5.67);
+		Coin quarter = generateQuarter();
 		
 		double result = 0.25;
 		
@@ -25,7 +25,7 @@ public class VendingMachineTest {
 	
 	@Test 
 	public void shouldReturnDimeValue() {
-		Coin dime = new Coin(17.91, 2.268); 
+		Coin dime = generateDime(); 
 			
 		double result = 0.10;
 		
@@ -34,7 +34,7 @@ public class VendingMachineTest {
 	 
 	@Test
 	public void shouldReturnNickelValue() {
-		Coin nickel = new Coin(21.21, 5.0);
+		Coin nickel = generateNickel();
 		
 		double result = .05;
 		
@@ -43,21 +43,21 @@ public class VendingMachineTest {
 	
 	@Test
 	public void shouldReturnPennyValue() {
-		Coin penny = new Coin(19.05, 2.5);
+		Coin penny = generatePenny();
 		
 		double result = 0.01;
 		
 		assertEquals(result, underTest.identifyCoin(penny), 0);
-	}
+	} 
 	
 	@Test
 	public void shouldReturnExpectedArrayListOfCoins() {
 		ArrayList<Coin> expected = new ArrayList<Coin>();
 		
-		Coin penny = new Coin(19.05, 2.5);
-		Coin nickel = new Coin(21.21, 5.0);
-		Coin dime = new Coin(17.91, 2.268);
-		Coin quarter = new Coin(24.26, 5.67);
+		Coin penny = generatePenny();
+		Coin nickel = generateNickel();
+		Coin dime = generateDime();
+		Coin quarter = generateQuarter();
 		
 		expected.add(penny);
 		expected.add(nickel);
@@ -65,6 +65,26 @@ public class VendingMachineTest {
 		expected.add(quarter);
 		
 		assertEquals(expected, underTest.queueCoins(penny, nickel, dime, quarter));
+	}
+
+	private Coin generateQuarter() {
+		Coin quarter = new Coin(24.26, 5.67);
+		return quarter;
+	}
+
+	private Coin generateDime() {
+		Coin dime = new Coin(17.91, 2.268);
+		return dime;
+	}
+
+	private Coin generateNickel() {
+		Coin nickel = new Coin(21.21, 5.0);
+		return nickel;
+	}
+
+	private Coin generatePenny() {
+		Coin penny = new Coin(19.05, 2.5);
+		return penny;
 	}
 	
 //	@Test
