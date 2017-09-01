@@ -16,7 +16,7 @@ public class VendingMachineTest {
 
 	@Test
 	public void shouldReturnQuarterValue() {
-		Coin quarter = new Coin(4, 4);
+		Coin quarter = new Coin(24.26, 5.67);
 		
 		double result = 0.25;
 		
@@ -25,16 +25,16 @@ public class VendingMachineTest {
 	
 	@Test 
 	public void shouldReturnDimeValue() {
-		Coin dime = new Coin(1, 1); 
+		Coin dime = new Coin(17.91, 2.268); 
 			
 		double result = 0.10;
 		
 		assertEquals(result, underTest.identifyCoin(dime), 0);
-	} 
+	}  
 	 
 	@Test
 	public void shouldReturnNickelValue() {
-		Coin nickel = new Coin(3, 3);
+		Coin nickel = new Coin(21.21, 5.0);
 		
 		double result = .05;
 		
@@ -43,7 +43,7 @@ public class VendingMachineTest {
 	
 	@Test
 	public void shouldReturnPennyValue() {
-		Coin penny = new Coin(2, 2);
+		Coin penny = new Coin(19.05, 2.5);
 		
 		double result = 0.01;
 		
@@ -54,10 +54,10 @@ public class VendingMachineTest {
 	public void shouldReturnExpectedArrayListOfCoins() {
 		ArrayList<Coin> expected = new ArrayList<Coin>();
 		
-		Coin penny = new Coin(2, 2);
-		Coin nickel = new Coin(3, 3);
-		Coin dime = new Coin(1, 1);
-		Coin quarter = new Coin(4, 4);
+		Coin penny = new Coin(19.05, 2.5);
+		Coin nickel = new Coin(21.21, 5.0);
+		Coin dime = new Coin(17.91, 2.268);
+		Coin quarter = new Coin(24.26, 5.67);
 		
 		expected.add(penny);
 		expected.add(nickel);

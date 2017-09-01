@@ -1,21 +1,21 @@
 
 public class Coin {
 
-	private int size;
-	private int weight;
+	private double sizeInMillimeters;
+	private double weightInGrams;
 	
-	public Coin(int size, int weight) {
-		this.size = size;
-		this.weight = weight;
+	public Coin(double sizeInMillimeters, double weightInGrams) {
+		this.sizeInMillimeters = sizeInMillimeters;
+		this.weightInGrams = weightInGrams;
 	}
 	
 	//getter methods:
-	public int getSize() {
-		return size;
+	public double getSizeInMillimeters() {
+		return sizeInMillimeters;
 	}
 	
-	public int getWeight() {
-		return weight;
+	public double getWeightInGrams() {
+		return weightInGrams;
 	}
 
 
