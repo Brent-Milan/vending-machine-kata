@@ -9,7 +9,6 @@ public class Coin {
 		this.weightInGrams = weightInGrams;
 	}
 	
-	//getter methods:
 	public double getSizeInMillimeters() {
 		return sizeInMillimeters;
 	}

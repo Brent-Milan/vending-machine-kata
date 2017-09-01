@@ -43,11 +43,19 @@ public class VendingMachine {
 	public ArrayList<Coin> queueCoins(Coin... coinsAsArray) {
 
 		for(int index = 0; index < coinsAsArray.length; index++) {
-			coins.add(coinsAsArray[index]);
+		coins.add(coinsAsArray[index]);
 		}
 		
 		return coins;
 	}
+
+	public double calcTotalValueOfCoinsInQueue(ArrayList<Coin> coinsList) {
+		double total = 0;
+		for(Coin current: coinsList) {
+			total += identifyCoin(current);
+		}
+		return total;
+	}   
 	
 	
 }
