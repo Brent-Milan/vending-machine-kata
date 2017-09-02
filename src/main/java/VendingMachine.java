@@ -41,11 +41,9 @@ public class VendingMachine {
 	}
 	
 	public ArrayList<Coin> queueCoins(Coin... coinsAsArray) {
-
 		for(int index = 0; index < coinsAsArray.length; index++) {
 		coins.add(coinsAsArray[index]);
 		}
-		
 		return coins;
 	}
 
@@ -55,7 +53,13 @@ public class VendingMachine {
 			total += identifyCoin(current);
 		}
 		return total;
-	}    
+	}
+	
+	public double calcChangeDue(ArrayList<Coin> coins, Product product) {
+		double valueOfCoins = calcTotalValueOfCoinsInQueue(coins);
+		double difference = valueOfCoins - product.getCost();
+		return difference;
+	}
 	
 	
 }

@@ -85,6 +85,22 @@ public class VendingMachineTest {
 		coins = underTest.queueCoins(quarter, quarter, dime, dime, dime, nickel, nickel, nickel, penny, penny, penny, penny, penny);
 		
 		assertEquals(1.00, underTest.calcTotalValueOfCoinsInQueue(coins), 0);
+	}
+	
+	@Test
+	public void shouldReturnCorrectChangeDueAs50Cents() {
+		ArrayList<Coin> coins = new ArrayList<Coin>();
+		Chips bagOfChips = new Chips(0.50);
+		
+		Coin penny = generatePenny();
+		Coin nickel = generateNickel();
+		Coin dime = generateDime();
+		Coin quarter = generateQuarter();
+		
+		coins = underTest.queueCoins(quarter, quarter, dime, dime, dime, nickel, nickel, nickel, penny, penny, penny, penny, penny);
+		double expected = bagOfChips.getCost();
+		
+		assertEquals(expected, underTest.calcChangeDue(coins, bagOfChips), 0);
 	} 
 	
 	private Coin generateQuarter() {
