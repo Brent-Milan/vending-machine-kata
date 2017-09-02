@@ -73,6 +73,7 @@ public class VendingMachineTest {
 		assertEquals(00.41, underTest.calcTotalValueOfCoinsInQueue(coinsList), .001);
 	} 
 	
+	@Test
 	public void shouldCalculateValueOfGivenCoinsTo1() {
 		ArrayList<Coin> coins = new ArrayList<Coin>();
 		
@@ -81,10 +82,10 @@ public class VendingMachineTest {
 		Coin dime = generateDime();
 		Coin quarter = generateQuarter();
 		
-		coins = underTest.queueCoins(quarter,quarter, dime, dime, dime, nickel, nickel, nickel, penny, penny, penny, penny, penny);
+		coins = underTest.queueCoins(quarter, quarter, dime, dime, dime, nickel, nickel, nickel, penny, penny, penny, penny, penny);
 		
 		assertEquals(1.00, underTest.calcTotalValueOfCoinsInQueue(coins), 0);
-	}
+	} 
 	
 	private Coin generateQuarter() {
 		Coin quarter = new Coin(24.26, 5.67);
