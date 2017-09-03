@@ -8,6 +8,10 @@ import org.junit.Test;
 public class VendingMachineTest {
 	
 	private VendingMachine underTest;
+	Coin penny = generatePenny();
+	Coin nickel = generateNickel();
+	Coin dime = generateDime();
+	Coin quarter = generateQuarter();
 
 	@Before
 	public void setUp() throws Exception {
@@ -53,10 +57,7 @@ public class VendingMachineTest {
 	public void shouldReturnExpectedArrayListOfCoins() {
 		ArrayList<Coin> expectedList = new ArrayList<Coin>();
 		
-		Coin penny = generatePenny();
-		Coin nickel = generateNickel();
-		Coin dime = generateDime();
-		Coin quarter = generateQuarter();
+		
 		
 		expectedList.add(penny);
 		expectedList.add(nickel);
@@ -77,10 +78,10 @@ public class VendingMachineTest {
 	public void shouldCalculateValueOfGivenCoinsTo1() {
 		ArrayList<Coin> coins = new ArrayList<Coin>();
 		
-		Coin penny = generatePenny();
-		Coin nickel = generateNickel();
-		Coin dime = generateDime();
-		Coin quarter = generateQuarter();
+//		Coin penny = generatePenny();
+//		Coin nickel = generateNickel();
+//		Coin dime = generateDime();
+//		Coin quarter = generateQuarter();
 		
 		coins = underTest.queueCoins(quarter, quarter, dime, dime, dime, nickel, nickel, nickel, penny, penny, penny, penny, penny);
 		
@@ -92,16 +93,21 @@ public class VendingMachineTest {
 		ArrayList<Coin> coins = new ArrayList<Coin>();
 		Chips bagOfChips = new Chips(0.50);
 		
-		Coin penny = generatePenny();
-		Coin nickel = generateNickel();
-		Coin dime = generateDime();
-		Coin quarter = generateQuarter();
+//		Coin penny = generatePenny();
+//		Coin nickel = generateNickel();
+//		Coin dime = generateDime();
+//		Coin quarter = generateQuarter();
 		
 		coins = underTest.queueCoins(quarter, quarter, dime, dime, dime, nickel, nickel, nickel, penny, penny, penny, penny, penny);
 		double expected = bagOfChips.getCost();
 		
 		assertEquals(expected, underTest.calcChangeDue(coins, bagOfChips), 0);
-	} 
+	}
+	
+//	@Test
+//	public void shouldReturnCorrectChangeDueAs35Cents() {
+//		
+//	}
 	
 	private Coin generateQuarter() {
 		Coin quarter = new Coin(24.26, 5.67);
