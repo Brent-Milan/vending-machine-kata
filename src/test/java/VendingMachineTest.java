@@ -110,6 +110,15 @@ public class VendingMachineTest {
 		assertEquals(expected, underTest.calcChangeDue(coins, cola), 0);
 	}
 	
+	@Test
+	public void shouldReturnCheckForSufficientCoinValueAndReturnFalse() {
+		ArrayList<Coin> coins = new ArrayList<Coin>();
+		Chips bagOfChips = new Chips(0.50);
+		coins = underTest.queueCoins(quarter);
+		
+		assertFalse(underTest.isSufficientPayment(coins, bagOfChips));
+	} 
+	
 	private Coin generateQuarter() {
 		Coin quarter = new Coin(24.26, 5.67);
 		return quarter;

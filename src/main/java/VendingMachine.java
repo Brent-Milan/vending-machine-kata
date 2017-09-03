@@ -59,6 +59,10 @@ public class VendingMachine {
 		double valueOfCoins = calcTotalValueOfCoinsInQueue(coins);
 		double difference = valueOfCoins - product.getCost();
 		return difference;
+	} 
+	
+	public boolean isSufficientPayment(ArrayList<Coin> coins, Chips chip) {
+		return calcTotalValueOfCoinsInQueue(coins) >= chip.getCost();
 	}
 	
 	
