@@ -97,7 +97,18 @@ public class VendingMachineTest {
 		double expected = 0.35;
 		
 		assertEquals(expected, underTest.calcChangeDue(coins, licorice), 0);
-	} 
+	}
+	
+	@Test
+	public void shouldReturnCorrectChangeDueAs0() {
+		ArrayList<Coin> coins = new ArrayList<Coin>();
+		Soda cola = new Soda(1.00);
+		
+		coins = underTest.queueCoins(quarter, quarter, dime, dime, dime, nickel, nickel, nickel, penny, penny, penny, penny, penny);
+		double expected = 0.00;
+		
+		assertEquals(expected, underTest.calcChangeDue(coins, cola), 0);
+	}
 	
 	private Coin generateQuarter() {
 		Coin quarter = new Coin(24.26, 5.67);
