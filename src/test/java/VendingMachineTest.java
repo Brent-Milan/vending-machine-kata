@@ -8,6 +8,7 @@ import org.junit.Test;
 public class VendingMachineTest {
 	
 	private VendingMachine underTest;
+	
 	Coin penny = generatePenny();
 	Coin nickel = generateNickel();
 	Coin dime = generateDime();
@@ -21,7 +22,6 @@ public class VendingMachineTest {
 	@Test
 	public void shouldReturnQuarterValue() {
 		Coin quarter = generateQuarter();
-		
 		double expected = 0.25;
 		
 		assertEquals(expected, underTest.identifyCoin(quarter), 0);
@@ -29,8 +29,7 @@ public class VendingMachineTest {
 	
 	@Test 
 	public void shouldReturnDimeValue() {
-		Coin dime = generateDime(); 
-			
+		Coin dime = generateDime(); 	
 		double expected = 0.10;
 		
 		assertEquals(expected, underTest.identifyCoin(dime), 0);
@@ -39,7 +38,6 @@ public class VendingMachineTest {
 	@Test
 	public void shouldReturnNickelValue() {
 		Coin nickel = generateNickel();
-		
 		double expected = .05;
 		
 		assertEquals(expected, underTest.identifyCoin(nickel), 0);
@@ -56,9 +54,6 @@ public class VendingMachineTest {
 	@Test
 	public void shouldReturnExpectedArrayListOfCoins() {
 		ArrayList<Coin> expectedList = new ArrayList<Coin>();
-		
-		
-		
 		expectedList.add(penny);
 		expectedList.add(nickel);
 		expectedList.add(dime);
@@ -70,18 +65,12 @@ public class VendingMachineTest {
 	@Test
 	public void shouldCalculateValueOfQueuedCoinsTo41Cents() {
 		ArrayList<Coin> coinsList = createArrayWithOneOfEachCoinType();
-		
 		assertEquals(00.41, underTest.calcTotalValueOfCoinsInQueue(coinsList), .001);
 	} 
 	
 	@Test
 	public void shouldCalculateValueOfGivenCoinsTo1() {
 		ArrayList<Coin> coins = new ArrayList<Coin>();
-		
-//		Coin penny = generatePenny();
-//		Coin nickel = generateNickel();
-//		Coin dime = generateDime();
-//		Coin quarter = generateQuarter();
 		
 		coins = underTest.queueCoins(quarter, quarter, dime, dime, dime, nickel, nickel, nickel, penny, penny, penny, penny, penny);
 		
@@ -93,21 +82,22 @@ public class VendingMachineTest {
 		ArrayList<Coin> coins = new ArrayList<Coin>();
 		Chips bagOfChips = new Chips(0.50);
 		
-//		Coin penny = generatePenny();
-//		Coin nickel = generateNickel();
-//		Coin dime = generateDime();
-//		Coin quarter = generateQuarter();
-		
 		coins = underTest.queueCoins(quarter, quarter, dime, dime, dime, nickel, nickel, nickel, penny, penny, penny, penny, penny);
-		double expected = bagOfChips.getCost();
+		double expected = 0.50;
 		
 		assertEquals(expected, underTest.calcChangeDue(coins, bagOfChips), 0);
 	}
 	
-//	@Test
-//	public void shouldReturnCorrectChangeDueAs35Cents() {
-//		
-//	}
+	@Test
+	public void shouldReturnCorrectChangeDueAs35Cents() {
+		ArrayList<Coin> coins = new ArrayList<Coin>();
+		Candy licorice = new Candy(0.65);
+		
+		coins = underTest.queueCoins(quarter, quarter, dime, dime, dime, nickel, nickel, nickel, penny, penny, penny, penny, penny);
+		double expected = 0.35;
+		
+		assertEquals(expected, underTest.calcChangeDue(coins, licorice), 0);
+	} 
 	
 	private Coin generateQuarter() {
 		Coin quarter = new Coin(24.26, 5.67);
@@ -143,6 +133,6 @@ public class VendingMachineTest {
 		coins.add(quarter);
 		
 		return coins;
-	} 
+	}  
 	
 } 
