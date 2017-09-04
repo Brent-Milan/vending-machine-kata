@@ -47,7 +47,7 @@ public class VendingMachine {
 		return coins;
 	}
 
-	public double calcTotalValueOfCoinsInQueue(ArrayList<Coin> coinsList) {
+	public double calcValueOfCoinsInQueue(ArrayList<Coin> coinsList) {
 		double total = 0;
 		for(Coin current: coinsList) {
 			total += identifyCoin(current);
@@ -56,13 +56,13 @@ public class VendingMachine {
 	}
 	
 	public double calcChangeDue(ArrayList<Coin> coins, Product product) {
-		double valueOfCoins = calcTotalValueOfCoinsInQueue(coins);
+		double valueOfCoins = calcValueOfCoinsInQueue(coins);
 		double difference = valueOfCoins - product.getCost();
 		return difference;
 	} 
 	
-	public boolean isSufficientPayment(ArrayList<Coin> coins, Chips chip) {
-		return calcTotalValueOfCoinsInQueue(coins) >= chip.getCost();
+	public boolean isSufficientPayment(ArrayList<Coin> coins, Product product) {
+		return calcValueOfCoinsInQueue(coins) >= product.getCost();
 	}
 	
 	

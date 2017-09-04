@@ -57,7 +57,7 @@ public class VendingMachineTest {
 		expectedList.add(penny);
 		expectedList.add(nickel);
 		expectedList.add(dime);
-		expectedList.add(quarter);
+		expectedList.add(quarter); 
 		
 		assertEquals(expectedList, underTest.queueCoins(penny, nickel, dime, quarter));
 	} 
@@ -65,7 +65,7 @@ public class VendingMachineTest {
 	@Test
 	public void shouldCalculateValueOfQueuedCoinsTo41Cents() {
 		ArrayList<Coin> coinsList = createArrayWithOneOfEachCoinType();
-		assertEquals(00.41, underTest.calcTotalValueOfCoinsInQueue(coinsList), .001);
+		assertEquals(00.41, underTest.calcValueOfCoinsInQueue(coinsList), .001);
 	} 
 	
 	@Test
@@ -74,7 +74,7 @@ public class VendingMachineTest {
 		
 		coins = underTest.queueCoins(quarter, quarter, dime, dime, dime, nickel, nickel, nickel, penny, penny, penny, penny, penny);
 		
-		assertEquals(1.00, underTest.calcTotalValueOfCoinsInQueue(coins), 0);
+		assertEquals(1.00, underTest.calcValueOfCoinsInQueue(coins), 0);
 	}
 	
 	@Test
@@ -111,13 +111,23 @@ public class VendingMachineTest {
 	}
 	
 	@Test
-	public void shouldReturnCheckForSufficientCoinValueAndReturnFalse() {
+	public void shouldCheckForSufficientCoinValueAndReturnFalse() {
 		ArrayList<Coin> coins = new ArrayList<Coin>();
 		Chips bagOfChips = new Chips(0.50);
 		coins = underTest.queueCoins(quarter);
 		
 		assertFalse(underTest.isSufficientPayment(coins, bagOfChips));
-	} 
+	}
+	
+	@Test
+	public void shouldCheckForSufficientCoinValueAndReturnTrue() {
+		ArrayList<Coin> coins = new ArrayList<Coin>();
+		coins = underTest.queueCoins(quarter, quarter, dime, dime, dime, nickel, nickel, nickel, penny, penny, penny, penny, penny);
+		
+		Soda cola = new Soda(1.00);
+		
+		assertTrue(underTest.isSufficientPayment(coins, cola));
+	}
 	
 	private Coin generateQuarter() {
 		Coin quarter = new Coin(24.26, 5.67);
