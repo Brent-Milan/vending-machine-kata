@@ -71,7 +71,12 @@ public class VendingMachine {
 	
 	public String pressButtonSoda() {
 		Soda soda = new Soda();
-		return "" + soda.getCostAsString();
+		return soda.getCostAsString();
+	}
+	
+	public String pressButtonChips() {
+		Chips bagOfChips = new Chips();
+		return bagOfChips.getCostAsString();
 	}
 	
 }

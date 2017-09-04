@@ -79,7 +79,7 @@ public class VendingMachineTest {
 	
 	@Test
 	public void shouldReturnCorrectChangeDueAs50Cents() {
-		Chips bagOfChips = new Chips(0.50);
+		Chips bagOfChips = new Chips();
 		
 		coins = underTest.queueCoins(quarter, quarter, dime, dime, dime, nickel, nickel, nickel, penny, penny, penny, penny, penny);
 		double expected = 0.50;
@@ -109,7 +109,7 @@ public class VendingMachineTest {
 	
 	@Test
 	public void shouldCheckForSufficientCoinValueAndReturnFalse() {
-		Chips bagOfChips = new Chips(0.50);
+		Chips bagOfChips = new Chips();
 		coins = underTest.queueCoins(quarter);
 		
 		assertFalse(underTest.isSufficientPayment(coins, bagOfChips));
@@ -139,6 +139,13 @@ public class VendingMachineTest {
 		String expected = "1.00";
 		
 		assertEquals(expected, underTest.pressButtonSoda());
+	}
+	
+	@Test
+	public void shouldDisplayCostOf50CentsWhenPressed() {
+		String expected = "0.50";
+		
+		assertEquals(expected, underTest.pressButtonChips());
 	}
 	
 	private Coin generateQuarter() {
