@@ -69,17 +69,17 @@ public class VendingMachine {
 			return "INSERT COIN";	
 	}
 	
-	public String pressButtonSoda() {
+	public String displaySodaCost() {
 		Soda soda = new Soda();
 		return soda.getCostAsString();
 	}
 	
-	public String pressButtonChips() {
+	public String displayChipsCost() {
 		Chips bagOfChips = new Chips();
 		return bagOfChips.getCostAsString();
 	}
 	
-	public String pressButtonCandy() {
+	public String displayCandyCost() {
 		Candy candy = new Candy();
 		return candy.getCostAsString();
 	}
