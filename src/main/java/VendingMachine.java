@@ -84,4 +84,8 @@ public class VendingMachine {
 		return candy.getCostAsString();
 	}
 	
+	public boolean isSodaButtonPressed() {
+		return false;
+	}
+	
 }

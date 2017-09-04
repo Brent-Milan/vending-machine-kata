@@ -155,6 +155,11 @@ public class VendingMachineTest {
 		assertEquals(expected, underTest.displayCandyCost());
 	}
 	
+	@Test
+	public void shouldReturnFalseByDefault() {
+		assertFalse(underTest.isSodaButtonPressed());
+	}
+	
 	private Coin generateQuarter() {
 		Coin quarter = new Coin(24.26, 5.67);
 		return quarter;
