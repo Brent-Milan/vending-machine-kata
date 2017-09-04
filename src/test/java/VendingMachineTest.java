@@ -124,11 +124,15 @@ public class VendingMachineTest {
 		assertTrue(underTest.isSufficientPayment(coins, cola));
 	}
 	
-//	@Test
-//	public void shouldReturnInsertChangeStringForInsufficientCoinValue() {
-//		
-//		String expected = "INSERT COIN";
-//		}
+	@Test
+	public void shouldReturnInsertChangeStringForInsufficientCoinValue() {
+		coins = underTest.queueCoins(quarter, nickel);
+		Soda cola = new Soda(1.00);
+		
+		String expected = "INSERT COIN";
+		
+		assertEquals(expected, underTest.display(coins, cola));
+	}
 		
 	
 	

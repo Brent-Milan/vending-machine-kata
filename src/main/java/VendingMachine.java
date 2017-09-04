@@ -65,5 +65,9 @@ public class VendingMachine {
 		return calcValueOfCoinsInQueue(coins) >= product.getCost();
 	}
 	
+	public String display(ArrayList<Coin> coins, Product product) {
+			return "INSERT COIN";	
+	}
+	
 	
 }
