@@ -79,4 +79,9 @@ public class VendingMachine {
 		return bagOfChips.getCostAsString();
 	}
 	
+	public String pressButtonCandy() {
+		Candy candy = new Candy();
+		return candy.getCostAsString();
+	}
+	
 }

@@ -89,7 +89,7 @@ public class VendingMachineTest {
 	
 	@Test
 	public void shouldReturnCorrectChangeDueAs35Cents() {
-		Candy licorice = new Candy(0.65);
+		Candy licorice = new Candy();
 		
 		coins = underTest.queueCoins(quarter, quarter, dime, dime, dime, nickel, nickel, nickel, penny, penny, penny, penny, penny);
 		double expected = 0.35;
@@ -146,6 +146,13 @@ public class VendingMachineTest {
 		String expected = "0.50";
 		
 		assertEquals(expected, underTest.pressButtonChips());
+	}
+	
+	@Test
+	public void shouldDisplayCostOf65CentsWhenPressed() {
+		String expected = "0.65";
+		
+		assertEquals(expected, underTest.pressButtonCandy());
 	}
 	
 	private Coin generateQuarter() {
