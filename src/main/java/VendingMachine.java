@@ -69,5 +69,9 @@ public class VendingMachine {
 			return "INSERT COIN";	
 	}
 	
+	public String pressButtonSoda() {
+		Soda soda = new Soda();
+		return "" + soda.getCostAsString();
+	}
 	
 }

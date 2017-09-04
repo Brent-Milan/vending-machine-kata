@@ -1,14 +1,19 @@
 
 public class Soda extends Product {
 	
-	private double cost;
+	private double cost = 1.00;
+	private String costAsString = "1.00";
 	
-	public Soda(double cost) {
-		this.cost = cost;
+	public Soda() {
 	}
 	
 	public double getCost() {
 		return cost;
 	}
-}
+	
+	public String getCostAsString() {
+		return costAsString;
+	}
+	
+} 
 

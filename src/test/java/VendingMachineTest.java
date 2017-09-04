@@ -99,7 +99,7 @@ public class VendingMachineTest {
 	
 	@Test
 	public void shouldReturnCorrectChangeDueAs0() {
-		Soda cola = new Soda(1.00);
+		Soda cola = new Soda();
 		
 		coins = underTest.queueCoins(quarter, quarter, dime, dime, dime, nickel, nickel, nickel, penny, penny, penny, penny, penny);
 		double expected = 0.00;
@@ -119,7 +119,7 @@ public class VendingMachineTest {
 	public void shouldCheckForSufficientCoinValueAndReturnTrue() {
 		coins = underTest.queueCoins(quarter, quarter, dime, dime, dime, nickel, nickel, nickel, penny, penny, penny, penny, penny);
 		
-		Soda cola = new Soda(1.00);
+		Soda cola = new Soda();
 		
 		assertTrue(underTest.isSufficientPayment(coins, cola));
 	}
@@ -127,14 +127,19 @@ public class VendingMachineTest {
 	@Test
 	public void shouldReturnInsertChangeStringForInsufficientCoinValue() {
 		coins = underTest.queueCoins(quarter, nickel);
-		Soda cola = new Soda(1.00);
+		Soda cola = new Soda();
 		
 		String expected = "INSERT COIN";
 		
 		assertEquals(expected, underTest.display(coins, cola));
 	}
-		
 	
+	@Test
+	public void shouldDisplayCostOf1DollarWhenPressed() {
+		String expected = "1.00";
+		
+		assertEquals(expected, underTest.pressButtonSoda());
+	}
 	
 	private Coin generateQuarter() {
 		Coin quarter = new Coin(24.26, 5.67);
