@@ -66,7 +66,9 @@ public class VendingMachine {
 	}
 	
 	public String display(ArrayList<Coin> coins, Product product) {
-			return "INSERT COIN";	
+		if(!isSufficientPayment(coins, product)) {
+			return "PRICE " + product.getCostAsString();
+		} else return "error";
 	}
 	
 	public String displaySodaCost() {

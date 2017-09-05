@@ -11,6 +11,7 @@ public class Chips extends Product  {
 		return cost;
 	}
 	
+	@Override
 	public String getCostAsString() {
 		return costAsString;
 	}

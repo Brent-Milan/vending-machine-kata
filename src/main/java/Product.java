@@ -6,4 +6,8 @@ public abstract class Product {
 	public double getCost() {
 		return cost;
 	}
+
+	public String getCostAsString() {
+		return null;
+	}
 }
