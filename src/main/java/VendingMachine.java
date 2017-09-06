@@ -5,7 +5,8 @@ public class VendingMachine {
 	private ArrayList<Coin> coins = new ArrayList<Coin>();
 	
 	protected boolean sodaButtonIsPressed = false;
-	protected boolean chipsButtonIsPressed = false;	
+	protected boolean chipsButtonIsPressed = false;
+	protected boolean candyButtonIsPressed = false;	
 	
 	public double identifyCoin(Coin coin) {
 		double size = coin.getSizeInMillimeters();
@@ -69,12 +70,12 @@ public class VendingMachine {
 	}
 	
 	public String display(ArrayList<Coin> coins, Product product) {
-		if(sodaButtonIsPressed || chipsButtonIsPressed) { 
+		if(sodaButtonIsPressed || chipsButtonIsPressed || candyButtonIsPressed) { 
 			return "PRICE " + product.getCostAsString();
 		}
 		if(coins.isEmpty() || coins == null) { 
 			return "INSERT COIN";
-		} else {  
+		} else {   
 			return "error"; 
 		}   
 	}

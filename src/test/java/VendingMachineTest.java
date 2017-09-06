@@ -152,7 +152,7 @@ public class VendingMachineTest {
 	}
 	
 	@Test
-	public void shouldCheckConditionalsAndReturnExpectedProductPriceString() {
+	public void shouldCheckConditionalsAndReturnPriceStringForSoda() {
 		underTest.sodaButtonIsPressed = true;
 		Soda soda = new Soda();
 		
@@ -162,14 +162,22 @@ public class VendingMachineTest {
 	}
 	
 	@Test
-	public void shouldReturnExpectedProductPriceStringForEachProduct() {
+	public void shouldReturnExpectedProductPriceStringForChips() {
 		underTest.chipsButtonIsPressed = true;
 		Chips bagOfChips = new Chips();
 		
 		String expected = "PRICE 0.50";
 		assertEquals(expected, underTest.display(coins, bagOfChips));
-	}
+	} 
 	
+	@Test
+	public void shouldReturnExpectedProductPriceStringForCandy() {
+		underTest.candyButtonIsPressed = true;
+		Candy candy = new Candy();
+		
+		String expected = "PRICE 0.65";
+		assertEquals(expected, underTest.display(coins, candy));
+	} 
 	@Test
 	public void shouldReturnInsertChangeStringForInsufficientCoinValue() {
 		Soda cola = new Soda();	
