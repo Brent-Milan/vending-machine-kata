@@ -159,16 +159,25 @@ public class VendingMachineTest {
 		String expected = "PRICE 1.00";
 		assertEquals(expected, underTest.display(coins, soda)); 
 		
-	} 
+	}
+	
+	@Test
+	public void shouldReturnExpectedProductPriceStringForEachProduct() {
+		underTest.chipsButtonIsPressed = true;
+		Chips bagOfChips = new Chips();
+		
+		String expected = "PRICE 0.50";
+		assertEquals(expected, underTest.display(coins, bagOfChips));
+	}
 	
 	@Test
 	public void shouldReturnInsertChangeStringForInsufficientCoinValue() {
-		Soda cola = new Soda();
-		
+		Soda cola = new Soda();	
 		String expected = "INSERT COIN";
 		
 		assertEquals(expected, underTest.display(coins, cola));
-	} 
+	}
+	
 	
 	private Coin generateQuarter() {
 		Coin quarter = new Coin(24.26, 5.67);
