@@ -154,7 +154,7 @@ public class VendingMachineTest {
 	@Test
 	public void shouldCheckConditionalsAndReturnPriceStringForSoda() {
 		underTest.sodaButtonIsPressed = true;
-		Soda soda = new Soda();
+		Soda soda = new Soda(10);
 		
 		String expected = "PRICE 1.00";
 		assertEquals(expected, underTest.display(coins, soda)); 
@@ -179,12 +179,26 @@ public class VendingMachineTest {
 		assertEquals(expected, underTest.display(coins, candy));
 	} 
 	@Test
-	public void shouldReturnInsertChangeStringForInsufficientCoinValue() {
+	public void shouldReturnInsertCoinStringForInsufficientCoinValue() {
 		Soda cola = new Soda();	
 		String expected = "INSERT COIN";
 		
 		assertEquals(expected, underTest.display(coins, cola));
+	} 
+	
+	@Test
+	public void shouldDisplayOutOfStockWhenInventoryOfProductIsZero() {
+		underTest.sodaButtonIsPressed = true;
+		Soda soda = new Soda(0);
+		String expected = "Out of Stock";
+		assertEquals(expected, underTest.display(coins, soda));
 	}
+	
+//	@Test
+//	public void shouldCheckForSufficentPaymentThenVendProductAndReduceInventoryCountByOne() {
+//		Soda cola = new Soda(20);
+//		
+//	}
 	
 	
 	private Coin generateQuarter() {
