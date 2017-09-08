@@ -70,9 +70,7 @@ public class VendingMachine {
 	}
 	
 	public String updateDisplay(ArrayList<Coin> coins, Product product) {
-		if( (sodaButtonIsPressed && product.getInventoryCount() == 0) || 
-			(candyButtonIsPressed && product.getInventoryCount() == 0) ||
-			(chipsButtonIsPressed && product.getInventoryCount() == 0)) { 
+		if(buttonIsPressedAndProductIsOutOfStock(product)) {
 			return "Out of Stock";
 		}
 		if( (isSufficientPayment(coins, product) && product.getInventoryCount() > 0 && sodaButtonIsPressed) ||
@@ -80,7 +78,7 @@ public class VendingMachine {
 			(isSufficientPayment(coins, product) && product.getInventoryCount() > 0 && chipsButtonIsPressed)) {
 			vendSelectedProduct(coins, product); 
 			return "THANK YOU"; 
-		}
+		} 
 		if(sodaButtonIsPressed || chipsButtonIsPressed || candyButtonIsPressed) { 
 			return "PRICE " + product.getCostAsString();
 		}
@@ -111,5 +109,14 @@ public class VendingMachine {
 			product.vendItem();
 		}
 	} 
+	
+	public boolean buttonIsPressedAndProductIsOutOfStock(Product product) {
+		if( (sodaButtonIsPressed && product.getInventoryCount() == 0) || 
+				(candyButtonIsPressed && product.getInventoryCount() == 0) ||
+				(chipsButtonIsPressed && product.getInventoryCount() == 0) ) {
+			return true;
+		}
+		return false;
+	}
 	 
 }
