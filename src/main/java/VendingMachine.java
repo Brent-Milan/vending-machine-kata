@@ -63,7 +63,12 @@ public class VendingMachine {
 		double valueOfCoins = calcValueOfCoinsInQueue(coins);
 		double difference = valueOfCoins - product.getCost();
 		return difference;
-	} 
+	}
+	
+	public Coin returnCoins(ArrayList<Coin> coins, Product product) {
+		Coin quarter = new Coin(24.26, 5.67);
+		return quarter;
+	}
 	
 	public boolean isSufficientPayment(ArrayList<Coin> coins, Product product) {
 		return calcValueOfCoinsInQueue(coins) >= product.getCost();
@@ -85,7 +90,7 @@ public class VendingMachine {
 		} else {   
 			return "error"; 
 		}      
-	}  
+	}   
 	
 	public String displaySodaCost() {
 		Soda soda = new Soda();
@@ -110,8 +115,8 @@ public class VendingMachine {
 	
 	public boolean buttonIsPressedAndProductIsOutOfStock(Product product) {
 		if( (sodaButtonIsPressed && product.getInventoryCount() == 0) || 
-				(candyButtonIsPressed && product.getInventoryCount() == 0) ||
-				(chipsButtonIsPressed && product.getInventoryCount() == 0) ) {
+			(candyButtonIsPressed && product.getInventoryCount() == 0) ||
+			(chipsButtonIsPressed && product.getInventoryCount() == 0) ) {
 			return true;
 		}
 		return false;
