@@ -76,8 +76,8 @@ public class VendingMachine {
 		if(paymentIsSufficientAndProductIsInStock(product)) {
 			vendSelectedProduct(coins, product); 
 			return "THANK YOU"; 
-		}
-		if(sodaButtonIsPressed || chipsButtonIsPressed || candyButtonIsPressed) { 
+		} 
+		if(productButtonIsPressed()) { 
 			return "PRICE " + product.getCostAsString();
 		}
 		if(coins.isEmpty() || coins == null) { 
@@ -123,6 +123,13 @@ public class VendingMachine {
 			(isSufficientPayment(coins, product) && product.getInventoryCount() > 0 && chipsButtonIsPressed)) {
 			return true;
 			}
+		return false;
+	}
+	
+	public boolean productButtonIsPressed() {
+		if(sodaButtonIsPressed || chipsButtonIsPressed || candyButtonIsPressed) {
+			return true;
+		}
 		return false;
 	}
 	 
