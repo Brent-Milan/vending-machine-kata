@@ -25,4 +25,9 @@ public class Chips extends Product  {
 	public int getInventoryCount() {
 		return inventoryCount;
 	}
+	
+	@Override
+	public void vendItem() {
+		inventoryCount -= 1;
+	}
 }

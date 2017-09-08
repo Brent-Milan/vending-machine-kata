@@ -232,6 +232,17 @@ public class VendingMachineTest {
 		assertEquals(expected, candy.getInventoryCount());
 	}  
 	
+	@Test
+	public void shouldCheckForSufficentPaymentAndThenReduceChipsInventoryCountByOne() {
+		Chips bagOfChips = new Chips(20);
+		coins = underTest.queueCoins(quarter, quarter, dime, dime, dime, nickel, nickel, nickel, penny, penny, penny, penny, penny);
+		underTest.vendSelectedProduct(coins, bagOfChips);
+		
+		int expected = 19;
+		
+		assertEquals(expected, bagOfChips.getInventoryCount());
+	}  
+	
 	
 	private Coin generateQuarter() {
 		Coin quarter = new Coin(24.26, 5.67);
