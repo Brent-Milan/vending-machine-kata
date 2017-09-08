@@ -75,6 +75,10 @@ public class VendingMachine {
 			(chipsButtonIsPressed && product.getInventoryCount() == 0)) { 
 			return "Out of Stock";
 		}
+		if(isSufficientPayment(coins, product) && product.getInventoryCount() > 0 && sodaButtonIsPressed) {
+			vendSelectedProduct(coins, product);
+			return "THANK YOU";
+		}
 		if(sodaButtonIsPressed || chipsButtonIsPressed || candyButtonIsPressed) { 
 			return "PRICE " + product.getCostAsString();
 		}
