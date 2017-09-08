@@ -265,6 +265,17 @@ public class VendingMachineTest {
 		assertEquals(expected, underTest.updateDisplay(coins, candy));
 	}
 	
+	@Test
+	public void shouldDisplayThankYouAfterCheckingForSufficientPaymentAndInventoryCountForChips() {
+		Chips bagOfChips = new Chips(10);
+		underTest.chipsButtonIsPressed = true;
+		coins = underTest.queueCoins(quarter, quarter, quarter);
+		
+		String expected = "THANK YOU";
+		
+		assertEquals(expected, underTest.updateDisplay(coins, bagOfChips));
+	}
+	
 	private Coin generateQuarter() {
 		Coin quarter = new Coin(24.26, 5.67);
 		return quarter;
