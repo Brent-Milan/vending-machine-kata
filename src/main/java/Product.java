@@ -4,7 +4,6 @@ public abstract class Product {
 	private double cost;
 	private int inventoryCount;
 	
-	
 	public double getCost() {
 		return cost;
 	}

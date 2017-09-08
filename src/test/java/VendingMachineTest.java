@@ -211,7 +211,7 @@ public class VendingMachineTest {
 	} 
 	
 	@Test
-	public void shouldCheckForSufficentPaymentAndThenReduceInventoryCountByOne() {
+	public void shouldCheckForSufficentPaymentAndThenReduceSodaInventoryCountByOne() {
 		Soda soda = new Soda(20);
 		coins = underTest.queueCoins(quarter, quarter, dime, dime, dime, nickel, nickel, nickel, penny, penny, penny, penny, penny);
 		underTest.vendSelectedProduct(coins, soda);
@@ -219,6 +219,17 @@ public class VendingMachineTest {
 		int expected = 19;
 		
 		assertEquals(expected, soda.getInventoryCount());
+	} 
+	
+	@Test
+	public void shouldCheckForSufficentPaymentAndThenReduceCandyInventoryCountByOne() {
+		Candy candy = new Candy(20);
+		coins = underTest.queueCoins(quarter, quarter, dime, dime, dime, nickel, nickel, nickel, penny, penny, penny, penny, penny);
+		underTest.vendSelectedProduct(coins, candy);
+		
+		int expected = 19;
+		
+		assertEquals(expected, candy.getInventoryCount());
 	}  
 	
 	

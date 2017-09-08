@@ -15,7 +15,7 @@ public class Coin {
 	
 	public double getWeightInGrams() {
 		return weightInGrams;
-	} 
+	}  
 
 
 }

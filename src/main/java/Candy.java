@@ -25,5 +25,10 @@ public class Candy extends Product {
 	@Override
 	public int getInventoryCount() {
 		return inventoryCount;
+	} 
+	
+	@Override
+	public void vendItem() {
+		inventoryCount -= 1;
 	}
 } 
