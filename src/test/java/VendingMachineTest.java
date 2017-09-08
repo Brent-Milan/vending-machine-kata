@@ -244,7 +244,7 @@ public class VendingMachineTest {
 	}  
 	
 	@Test
-	public void shouldDisplayThankYouAfterCheckingForSufficientPaymentAndInventoryCount() {
+	public void shouldDisplayThankYouAfterCheckingForSufficientPaymentAndInventoryCountForSoda() {
 		Soda soda = new Soda(10);
 		underTest.sodaButtonIsPressed = true;
 		coins = underTest.queueCoins(quarter, quarter, dime, dime, dime, nickel, nickel, nickel, penny, penny, penny, penny, penny);
@@ -252,6 +252,17 @@ public class VendingMachineTest {
 		String expected = "THANK YOU";
 		
 		assertEquals(expected, underTest.updateDisplay(coins, soda));
+	}
+	
+	@Test 
+	public void shouldDisplayThankYouAfterCheckingForSufficientPaymentAndInventoryCountForCandy() {
+		Candy candy = new Candy(10);
+		underTest.candyButtonIsPressed = true;
+		coins = underTest.queueCoins(quarter, quarter, quarter);
+		
+		String expected = "THANK YOU";
+		
+		assertEquals(expected, underTest.updateDisplay(coins, candy));
 	}
 	
 	private Coin generateQuarter() {
