@@ -73,12 +73,10 @@ public class VendingMachine {
 		if(buttonIsPressedAndProductIsOutOfStock(product)) {
 			return "Out of Stock";
 		}
-		if( (isSufficientPayment(coins, product) && product.getInventoryCount() > 0 && sodaButtonIsPressed) ||
-			(isSufficientPayment(coins, product) && product.getInventoryCount() > 0 && candyButtonIsPressed)||
-			(isSufficientPayment(coins, product) && product.getInventoryCount() > 0 && chipsButtonIsPressed)) {
+		if(paymentIsSufficientAndProductIsInStock(product)) {
 			vendSelectedProduct(coins, product); 
 			return "THANK YOU"; 
-		} 
+		}
 		if(sodaButtonIsPressed || chipsButtonIsPressed || candyButtonIsPressed) { 
 			return "PRICE " + product.getCostAsString();
 		}
@@ -116,6 +114,15 @@ public class VendingMachine {
 				(chipsButtonIsPressed && product.getInventoryCount() == 0) ) {
 			return true;
 		}
+		return false;
+	}
+	
+	public boolean paymentIsSufficientAndProductIsInStock(Product product) {
+		if( (isSufficientPayment(coins, product) && product.getInventoryCount() > 0 && sodaButtonIsPressed) ||
+			(isSufficientPayment(coins, product) && product.getInventoryCount() > 0 && candyButtonIsPressed)||
+			(isSufficientPayment(coins, product) && product.getInventoryCount() > 0 && chipsButtonIsPressed)) {
+			return true;
+			}
 		return false;
 	}
 	 
