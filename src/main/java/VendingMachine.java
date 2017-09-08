@@ -69,7 +69,7 @@ public class VendingMachine {
 		return calcValueOfCoinsInQueue(coins) >= product.getCost();
 	}
 	
-	public String display(ArrayList<Coin> coins, Product product) {
+	public String updateDisplay(ArrayList<Coin> coins, Product product) {
 		if( (sodaButtonIsPressed && product.getInventoryCount() == 0) || 
 			(candyButtonIsPressed && product.getInventoryCount() == 0) ||
 			(chipsButtonIsPressed && product.getInventoryCount() == 0)) { 
@@ -82,7 +82,7 @@ public class VendingMachine {
 			return "INSERT COIN";
 		} else {   
 			return "error"; 
-		}     
+		}      
 	}  
 	
 	public String displaySodaCost() {
@@ -99,6 +99,11 @@ public class VendingMachine {
 		Candy candy = new Candy();
 		return candy.getCostAsString();
 	}
-	 
 	
+	public void vendSelectedProduct(ArrayList<Coin> coins, Product product) {
+		if(isSufficientPayment(coins, product)) {
+			product.vendItem();
+		}
+	} 
+	 
 }

@@ -2,7 +2,8 @@
 public abstract class Product {
 
 	private double cost;
-	private int inventoryCost;
+	private int inventoryCount;
+	
 	
 	public double getCost() {
 		return cost;
@@ -13,6 +14,9 @@ public abstract class Product {
 	}
 	
 	public int getInventoryCount() {
-		return inventoryCost;
+		return inventoryCount;
+	}
+
+	public void vendItem() {
 	}
 }

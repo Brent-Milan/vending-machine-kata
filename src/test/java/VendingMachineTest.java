@@ -71,7 +71,6 @@ public class VendingMachineTest {
 	
 	@Test
 	public void shouldCalculateValueOfGivenCoinsTo1() {
-		
 		coins = underTest.queueCoins(quarter, quarter, dime, dime, dime, nickel, nickel, nickel, penny, penny, penny, penny, penny);
 		
 		assertEquals(1.00, underTest.calcValueOfCoinsInQueue(coins), 0);
@@ -99,12 +98,12 @@ public class VendingMachineTest {
 	
 	@Test
 	public void shouldReturnCorrectChangeDueAs0() {
-		Soda cola = new Soda();
+		Soda soda = new Soda();
 		
 		coins = underTest.queueCoins(quarter, quarter, dime, dime, dime, nickel, nickel, nickel, penny, penny, penny, penny, penny);
 		double expected = 0.00;
 		
-		assertEquals(expected, underTest.calcChangeDue(coins, cola), 0);
+		assertEquals(expected, underTest.calcChangeDue(coins, soda), 0);
 	}
 	
 	@Test
@@ -119,9 +118,9 @@ public class VendingMachineTest {
 	public void shouldCheckForSufficientCoinValueAndReturnTrue() {
 		coins = underTest.queueCoins(quarter, quarter, dime, dime, dime, nickel, nickel, nickel, penny, penny, penny, penny, penny);
 		
-		Soda cola = new Soda();
+		Soda soda = new Soda();
 		
-		assertTrue(underTest.isSufficientPayment(coins, cola));
+		assertTrue(underTest.isSufficientPayment(coins, soda));
 	}
 	
 	
@@ -157,7 +156,7 @@ public class VendingMachineTest {
 		Soda soda = new Soda(10);
 		
 		String expected = "PRICE 1.00";
-		assertEquals(expected, underTest.display(coins, soda)); 
+		assertEquals(expected, underTest.updateDisplay(coins, soda)); 
 		
 	}
 	
@@ -167,7 +166,7 @@ public class VendingMachineTest {
 		Chips bagOfChips = new Chips(10);
 		
 		String expected = "PRICE 0.50";
-		assertEquals(expected, underTest.display(coins, bagOfChips));
+		assertEquals(expected, underTest.updateDisplay(coins, bagOfChips));
 	} 
 	
 	@Test
@@ -176,7 +175,7 @@ public class VendingMachineTest {
 		Candy candy = new Candy(10);
 		
 		String expected = "PRICE 0.65";
-		assertEquals(expected, underTest.display(coins, candy));
+		assertEquals(expected, underTest.updateDisplay(coins, candy));
 	} 
 	
 	@Test
@@ -184,7 +183,7 @@ public class VendingMachineTest {
 		Soda cola = new Soda();	
 		String expected = "INSERT COIN";
 		
-		assertEquals(expected, underTest.display(coins, cola));
+		assertEquals(expected, underTest.updateDisplay(coins, cola));
 	} 
 	
 	@Test
@@ -192,7 +191,7 @@ public class VendingMachineTest {
 		underTest.sodaButtonIsPressed = true;
 		Soda soda = new Soda(0);
 		String expected = "Out of Stock";
-		assertEquals(expected, underTest.display(coins, soda));
+		assertEquals(expected, underTest.updateDisplay(coins, soda));
 	}
 	
 	@Test
@@ -200,7 +199,7 @@ public class VendingMachineTest {
 		underTest.candyButtonIsPressed = true;
 		Candy candy = new Candy(0);
 		String expected = "Out of Stock";
-		assertEquals(expected, underTest.display(coins, candy));
+		assertEquals(expected, underTest.updateDisplay(coins, candy));
 	}
 	
 	@Test
@@ -208,14 +207,19 @@ public class VendingMachineTest {
 		underTest.candyButtonIsPressed = true;
 		Chips bagOfChips = new Chips();
 		String expected = "Out of Stock";
-		assertEquals(expected, underTest.display(coins, bagOfChips));
+		assertEquals(expected, underTest.updateDisplay(coins, bagOfChips));
 	} 
 	
-//	@Test
-//	public void shouldCheckForSufficentPaymentThenVendProductAndReduceInventoryCountByOne() {
-//		Soda cola = new Soda(20);
-//		
-//	}
+	@Test
+	public void shouldCheckForSufficentPaymentAndThenReduceInventoryCountByOne() {
+		Soda soda = new Soda(20);
+		coins = underTest.queueCoins(quarter, quarter, dime, dime, dime, nickel, nickel, nickel, penny, penny, penny, penny, penny);
+		underTest.vendSelectedProduct(coins, soda);
+		
+		int expected = 19;
+		
+		assertEquals(expected, soda.getInventoryCount());
+	}  
 	
 	
 	private Coin generateQuarter() {

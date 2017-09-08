@@ -27,5 +27,10 @@ public class Soda extends Product {
 		return inventoryCount;
 	} 
 	
+	@Override
+	public void vendItem() {
+		inventoryCount -= 1;
+	}
+	
 } 
 
