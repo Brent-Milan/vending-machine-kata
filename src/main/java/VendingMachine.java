@@ -22,7 +22,7 @@ public class VendingMachine {
 			return 0.01;
 		}
 		return 0.00;
-	}
+	} 
 
 	private boolean isAPenny(double size, double weight) {
 		return size == 19.05 && weight == 2.5;
@@ -70,7 +70,7 @@ public class VendingMachine {
 	}
 	
 	public String display(ArrayList<Coin> coins, Product product) {
-		if(sodaButtonIsPressed && product.getInventoryCount() == 0) {
+		if( (sodaButtonIsPressed && product.getInventoryCount() == 0) || (candyButtonIsPressed && product.getInventoryCount() == 0)) {
 			return "Out of Stock";
 		}
 		if(sodaButtonIsPressed || chipsButtonIsPressed || candyButtonIsPressed) { 
@@ -80,8 +80,8 @@ public class VendingMachine {
 			return "INSERT COIN";
 		} else {   
 			return "error"; 
-		}    
-	}
+		}     
+	} 
 	
 	public String displaySodaCost() {
 		Soda soda = new Soda();
@@ -97,6 +97,6 @@ public class VendingMachine {
 		Candy candy = new Candy();
 		return candy.getCostAsString();
 	}
-	
+	 
 	
 }

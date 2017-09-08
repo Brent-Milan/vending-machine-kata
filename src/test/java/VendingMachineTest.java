@@ -173,11 +173,12 @@ public class VendingMachineTest {
 	@Test
 	public void shouldReturnExpectedProductPriceStringForCandy() {
 		underTest.candyButtonIsPressed = true;
-		Candy candy = new Candy();
+		Candy candy = new Candy(10);
 		
 		String expected = "PRICE 0.65";
 		assertEquals(expected, underTest.display(coins, candy));
 	} 
+	
 	@Test
 	public void shouldReturnInsertCoinStringForInsufficientCoinValue() {
 		Soda cola = new Soda();	
@@ -187,11 +188,19 @@ public class VendingMachineTest {
 	} 
 	
 	@Test
-	public void shouldDisplayOutOfStockWhenInventoryOfProductIsZero() {
+	public void shouldDisplayOutOfStockWhenSodaInventoryCountIsZero() {
 		underTest.sodaButtonIsPressed = true;
 		Soda soda = new Soda(0);
 		String expected = "Out of Stock";
 		assertEquals(expected, underTest.display(coins, soda));
+	}
+	
+	@Test
+	public void shouldDisplayOutOfStockWhenCandyInventoryCountIsZero() {
+		underTest.candyButtonIsPressed = true;
+		Candy candy = new Candy(0);
+		String expected = "Out of Stock";
+		assertEquals(expected, underTest.display(coins, candy));
 	}
 	
 //	@Test

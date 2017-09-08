@@ -3,10 +3,16 @@ public class Candy extends Product {
 	
 	private double cost = 0.65;
 	private String costAsString = "0.65";
+	private int inventoryCount;
+	
 	
 	public Candy() {
 	}
 	
+	public Candy(int inventoryCount) {
+		this.inventoryCount = inventoryCount;
+	}
+
 	public double getCost() {
 		return cost;
 	}
@@ -15,4 +21,8 @@ public class Candy extends Product {
 	public String getCostAsString() {
 		return costAsString;
 	}
-}
+	
+	public int getInventoryCount() {
+		return inventoryCount;
+	}
+} 
