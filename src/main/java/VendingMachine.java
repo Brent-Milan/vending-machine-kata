@@ -70,7 +70,9 @@ public class VendingMachine {
 	}
 	
 	public String display(ArrayList<Coin> coins, Product product) {
-		if( (sodaButtonIsPressed && product.getInventoryCount() == 0) || (candyButtonIsPressed && product.getInventoryCount() == 0)) {
+		if( (sodaButtonIsPressed && product.getInventoryCount() == 0) || 
+			(candyButtonIsPressed && product.getInventoryCount() == 0) ||
+			(chipsButtonIsPressed && product.getInventoryCount() == 0)) { 
 			return "Out of Stock";
 		}
 		if(sodaButtonIsPressed || chipsButtonIsPressed || candyButtonIsPressed) { 
@@ -81,7 +83,7 @@ public class VendingMachine {
 		} else {   
 			return "error"; 
 		}     
-	} 
+	}  
 	
 	public String displaySodaCost() {
 		Soda soda = new Soda();

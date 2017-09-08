@@ -164,7 +164,7 @@ public class VendingMachineTest {
 	@Test
 	public void shouldReturnExpectedProductPriceStringForChips() {
 		underTest.chipsButtonIsPressed = true;
-		Chips bagOfChips = new Chips();
+		Chips bagOfChips = new Chips(10);
 		
 		String expected = "PRICE 0.50";
 		assertEquals(expected, underTest.display(coins, bagOfChips));
@@ -202,6 +202,14 @@ public class VendingMachineTest {
 		String expected = "Out of Stock";
 		assertEquals(expected, underTest.display(coins, candy));
 	}
+	
+	@Test
+	public void shouldDisplayOutOfStockWhenChipsInventoryCountIsZero() {
+		underTest.candyButtonIsPressed = true;
+		Chips bagOfChips = new Chips();
+		String expected = "Out of Stock";
+		assertEquals(expected, underTest.display(coins, bagOfChips));
+	} 
 	
 //	@Test
 //	public void shouldCheckForSufficentPaymentThenVendProductAndReduceInventoryCountByOne() {

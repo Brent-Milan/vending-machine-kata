@@ -22,6 +22,7 @@ public class Candy extends Product {
 		return costAsString;
 	}
 	
+	@Override
 	public int getInventoryCount() {
 		return inventoryCount;
 	}
