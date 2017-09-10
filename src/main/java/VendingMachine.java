@@ -62,12 +62,14 @@ public class VendingMachine {
 	public double calcChangeDue(ArrayList<Coin> coins, Product product) {
 		double valueOfCoins = calcValueOfCoinsInQueue(coins);
 		double difference = valueOfCoins - product.getCost();
-		return difference;
+		return difference; 
 	}
 	
-	public Coin returnCoins(ArrayList<Coin> coins, Product product) {
+	public ArrayList<Coin> returnCoins() {
 		Coin quarter = new Coin(24.26, 5.67);
-		return quarter;
+		ArrayList<Coin> coinsToReturn= new ArrayList<Coin>();
+		coinsToReturn.add(quarter);
+		return coinsToReturn;
 	}
 	
 	public boolean isSufficientPayment(ArrayList<Coin> coins, Product product) {
@@ -89,7 +91,7 @@ public class VendingMachine {
 			return "INSERT COIN";
 		} else {   
 			return "error"; 
-		}      
+		}       
 	}   
 	
 	public String displaySodaCost() {
