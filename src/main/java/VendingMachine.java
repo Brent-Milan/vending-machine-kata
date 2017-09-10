@@ -2,7 +2,12 @@ import java.util.ArrayList;
 
 public class VendingMachine {
 
-	private ArrayList<Coin> coins = new ArrayList<Coin>();
+	private ArrayList<Coin> coinsInserted = new ArrayList<Coin>();
+	
+	private ArrayList<Coin> coinsToReturn = new ArrayList<Coin>();
+	
+//	private ArrayList<Coin> quarterBank = new ArrayList<Coin>();
+	private QuarterRepository quarterBank = new QuarterRepository();
 	
 	protected boolean sodaButtonIsPressed = false;
 	protected boolean chipsButtonIsPressed = false;
@@ -41,14 +46,14 @@ public class VendingMachine {
 	}  
 	
 	public void addCoin(Coin coin) {
-		coins.add(coin);
+		coinsInserted.add(coin);
 	}
 	
 	public ArrayList<Coin> queueCoins(Coin... coinsAsArray) {
 		for(int index = 0; index < coinsAsArray.length; index++) {
-		coins.add(coinsAsArray[index]);
+		coinsInserted.add(coinsAsArray[index]);
 		}
-		return coins;
+		return coinsInserted;
 	}
 
 	public double calcValueOfCoinsInQueue(ArrayList<Coin> coinsList) {
@@ -65,10 +70,12 @@ public class VendingMachine {
 		return difference; 
 	}
 	
-	public ArrayList<Coin> returnCoins() {
-		Coin quarter = new Coin(24.26, 5.67);
-		ArrayList<Coin> coinsToReturn= new ArrayList<Coin>();
-		coinsToReturn.add(quarter);
+	public ArrayList<Coin> returnCoins(ArrayList<Coin> coins, Product product) {
+		double difference = calcChangeDue(coins, product);
+		while(difference > 0)
+			if(difference > 0.25) {
+				quarterBank.remove(0);
+			}
 		return coinsToReturn;
 	}
 	
@@ -125,9 +132,9 @@ public class VendingMachine {
 	}
 	
 	public boolean paymentIsSufficientAndProductIsInStock(Product product) {
-		if( (isSufficientPayment(coins, product) && product.getInventoryCount() > 0 && sodaButtonIsPressed) ||
-			(isSufficientPayment(coins, product) && product.getInventoryCount() > 0 && candyButtonIsPressed)||
-			(isSufficientPayment(coins, product) && product.getInventoryCount() > 0 && chipsButtonIsPressed)) {
+		if( (isSufficientPayment(coinsInserted, product) && product.getInventoryCount() > 0 && sodaButtonIsPressed) ||
+			(isSufficientPayment(coinsInserted, product) && product.getInventoryCount() > 0 && candyButtonIsPressed)||
+			(isSufficientPayment(coinsInserted, product) && product.getInventoryCount() > 0 && chipsButtonIsPressed)) {
 			return true;
 			}
 		return false;
@@ -139,5 +146,10 @@ public class VendingMachine {
 		}
 		return false;
 	}
+	
+	public ArrayList<Coin> getCoinsToReturn() {
+		return coinsToReturn;
+	}
+	
 	 
 }

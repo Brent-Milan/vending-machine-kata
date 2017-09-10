@@ -289,20 +289,29 @@ public class VendingMachineTest {
 		assertEquals(expected, actual, 0); 
 	}
 	
-   
+	@Test
+	public void shouldCalculateChangeDueAndReturnOneQuarter() {
+		coinsInserted = underTest.queueCoins(quarter, quarter, quarter);
+		ArrayList<Coin> expectedCoins = new ArrayList<Coin>();
+		Soda soda = new Soda();
+		
+		expectedCoins.add(quarter);
+		double expectedCoinsValue = underTest.calcValueOfCoinsInQueue(expectedCoins);
+		ArrayList<Coin> resultAsArray = underTest.returnCoins(coinsInserted, soda);
+		double result = underTest.calcValueOfCoinsInQueue(resultAsArray);
+		
+		assertEquals(expectedCoinsValue, result, 0);
+	}
 	
 //	@Test
-//	public void shouldCalculateChangeDueAndReturnTwoQuarters() {
-//		ArrayList<Coin> returnCoins = new ArrayList<Coin>();
-//		Soda soda = new Soda();
+//	public void shouldAddQuarterObjectToVendingMachineQuarterBankArray() {
+//		ArrayList<Coin> expectedBank = new ArrayList<Coin>();
+//		expectedBank.add(quarter);
 //		
-//		coins = underTest.queueCoins(quarter, quarter, quarter, quarter);
-//		returnCoins = underTest.queueCoins(quarter, quarter);
-//		double expected = underTest.calcValueOfCoinsInQueue(returnCoins);
-//		double actual = underTest.calcValueOfCoinsInQueue(coins);
 //		
-//		assertEquals(expected, actual, 0);
-//	} 
+//		assertEquals(expectedBank.toString(), actualBank.toString());
+//	}
+	
 	
 	private Coin generateQuarter() {
 		Coin quarter = new Coin(24.26, 5.67);
