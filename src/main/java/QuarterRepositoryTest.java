@@ -25,7 +25,16 @@ public class QuarterRepositoryTest {
 		assertEquals(expected, countQuarters(underTest.quarterRepo));
 	}
 
-	
+	@Test
+	public void shouldReturnAFrequencyOf1() {
+		underTest.stockQuartersInBank(quarter, quarter);
+		underTest.remove(0);
+		
+		int result = countQuarters(underTest.quarterRepo);
+		int expected = 1;
+		
+		assertEquals(expected, result);
+	}
 
 	
 	public int countQuarters(ArrayList<Quarter> quarters) {
