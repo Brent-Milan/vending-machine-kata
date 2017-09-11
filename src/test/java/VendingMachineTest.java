@@ -291,7 +291,7 @@ public class VendingMachineTest {
 	
 	@Test
 	public void shouldCalculateChangeDueAndReturnOneQuarter() {
-		coinsInserted = underTest.queueCoins(quarter, quarter, quarter);
+		coinsInserted = underTest.queueCoins(quarter, quarter, quarter, quarter, quarter);
 		Soda soda = new Soda();
 		
 		ArrayList<Coin> expectedCoins = new ArrayList<Coin>();
@@ -302,7 +302,7 @@ public class VendingMachineTest {
 		double result = underTest.calcValueOfCoinsInQueue(resultAsArray);
 		
 		assertEquals(expectedCoinsValue, result, 0);
-	}
+	}    
 	
 	
 	
