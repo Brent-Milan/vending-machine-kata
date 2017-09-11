@@ -276,19 +276,7 @@ public class VendingMachineTest {
 		assertEquals(expected, underTest.updateDisplay(coinsInserted, bagOfChips));
 	}
 	
-//	@Test
-//	public void shouldReturnOneQuarter() {
-//		ArrayList<Coin> expectedReturn = new ArrayList<Coin>();
-//		expectedReturn.add(quarter);
-//		
-//		ArrayList<Coin> result = underTest.returnCoins(coins, soda);
-//		
-//		double expected = 0.25;
-//		double actual = underTest.calcValueOfCoinsInQueue(result);
-//		 
-//		assertEquals(expected, actual, 0); 
-//	}
-	
+
 	@Test
 	public void shouldCalculateChangeDueAndReturnOneQuarter() {
 		coinsInserted = underTest.queueCoins(quarter, quarter, quarter, quarter, quarter);
