@@ -14,7 +14,6 @@ public class QuarterRepository {
 				quarterRepo.remove(index);
 			} 
 		}
-		
 	}
 
 	public ArrayList<Quarter> stockQuartersInBank(Quarter... quartersAsArray) {

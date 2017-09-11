@@ -36,9 +36,9 @@ public class QuarterRepositoryTest {
 		assertEquals(expected, result);
 	}
 
-	
 	public int countQuarters(ArrayList<Quarter> quarters) {
-	return Collections.frequency(quarters, quarter);
+		return Collections.frequency(quarters, quarter);
 	}
 
+	
 }
