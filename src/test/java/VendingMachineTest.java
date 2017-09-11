@@ -292,7 +292,20 @@ public class VendingMachineTest {
 		assertEquals(expectedCoinsValue, result, 0);
 	}    
 	
-	
+	@Test
+	public void shouldCalculateChangeDueAndReturnOneDime() {
+		coinsInserted = underTest.queueCoins(quarter, quarter, quarter, quarter, dime);
+		Soda soda = new Soda();
+		
+		ArrayList<Coin> expectedCoins = new ArrayList<Coin>();
+		expectedCoins.add(dime);
+		double expectedCoinsValue = underTest.calcValueOfCoinsInQueue(expectedCoins);
+		
+		ArrayList<Coin> resultAsArray = underTest.returnCoins(coinsInserted, soda);
+		double result = underTest.calcValueOfCoinsInQueue(resultAsArray);
+		
+		assertEquals(expectedCoinsValue, result, 0);
+	}
 	
 	private Coin generateQuarter() {
 		Coin quarter = new Coin(24.26, 5.67);

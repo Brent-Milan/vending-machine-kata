@@ -8,6 +8,7 @@ public class VendingMachine {
 	
 //	private ArrayList<Coin> quarterBank = new ArrayList<Coin>();
 	private QuarterRepository quarterBank = new QuarterRepository();
+	private DimeRepository dimeBank = new DimeRepository();
 	
 	protected boolean sodaButtonIsPressed = false;
 	protected boolean chipsButtonIsPressed = false;
@@ -78,7 +79,12 @@ public class VendingMachine {
 				Quarter quarter = new Quarter();
 				coinsToReturn.add(quarter);
 				difference -= 0.25;
-			} 
+			} if (difference >= 0.1) {
+				dimeBank.remove(0);
+				Dime dime = new Dime();
+				coinsToReturn.add(dime);
+				difference -= 10;
+			}
 		return coinsToReturn;
 	}   
 	
