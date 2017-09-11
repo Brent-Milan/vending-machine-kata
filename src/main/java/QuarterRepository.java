@@ -2,9 +2,9 @@ import java.util.ArrayList;
 
 public class QuarterRepository {
 	
-	private ArrayList<Coin> quarterRepo = new ArrayList<Coin>();
+	ArrayList<Quarter> quarterRepo = new ArrayList<Quarter>();
 
-	public ArrayList<Coin> getQuarterRepo() {
+	public ArrayList<Quarter> getQuarterRepo() {
 		return quarterRepo;
 	}
 
@@ -15,5 +15,12 @@ public class QuarterRepository {
 			} 
 		}
 		
+	}
+
+	public ArrayList<Quarter> stockQuartersInBank(Quarter... quartersAsArray) {
+		for(int index = 0; index < quartersAsArray.length; index++) {
+		quarterRepo.add(quartersAsArray[index]);
+		}
+		return quarterRepo;
 	}
 }
