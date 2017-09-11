@@ -76,7 +76,8 @@ public class VendingMachine {
 			if(difference >= 0.25) {
 				quarterBank.remove(0);
 				Quarter quarter = new Quarter();
-				coinsToReturn.add(quarter); 
+				coinsToReturn.add(quarter);
+				difference -= 0.25;
 			} 
 		return coinsToReturn;
 	}   
