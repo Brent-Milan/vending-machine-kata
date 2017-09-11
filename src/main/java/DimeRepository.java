@@ -2,9 +2,24 @@ import java.util.ArrayList;
 
 public class DimeRepository {
 	
-	ArrayList<Quarter> quarterRepo = new ArrayList<Quarter>();
+	ArrayList<Dime> dimeRepo = new ArrayList<Dime>();
 
-	public ArrayList<Quarter> getQuarterRepo() {
-		return quarterRepo;
+	public ArrayList<Dime> getQuarterRepo() {
+		return dimeRepo;
+	}
+	
+	public void remove(int indexOfElementToRemove) {
+		for(int index = 0; index < dimeRepo.size(); index++) {
+			if(index == indexOfElementToRemove) {
+				dimeRepo.remove(index);
+			} 
+		}
+	}
+
+	public ArrayList<Dime> stockDimesInBank(Dime... dimesAsArray) {
+		for(int index = 0; index < dimesAsArray.length; index++) {
+		dimeRepo.add(dimesAsArray[index]);
+		}
+			return dimeRepo;
 	}
 }
