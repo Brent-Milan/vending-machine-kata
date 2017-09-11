@@ -7,4 +7,13 @@ public class QuarterRepository {
 	public ArrayList<Coin> getQuarterRepo() {
 		return quarterRepo;
 	}
+
+	public void remove(int indexOfElementToRemove) {
+		for(int index = 0; index < quarterRepo.size(); index++) {
+			if(index == indexOfElementToRemove) {
+				quarterRepo.remove(index);
+			} 
+		}
+		
+	}
 }

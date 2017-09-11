@@ -77,7 +77,7 @@ public class VendingMachine {
 				quarterBank.remove(0);
 			}
 		return coinsToReturn;
-	}
+	} 
 	
 	public boolean isSufficientPayment(ArrayList<Coin> coins, Product product) {
 		return calcValueOfCoinsInQueue(coins) >= product.getCost();
