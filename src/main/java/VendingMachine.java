@@ -61,7 +61,7 @@ public class VendingMachine {
 		double total = 0;
 		for(Coin current: coinsList) {
 			total += identifyCoin(current);
-		}
+		} 
 		return total;
 	}
 	
@@ -73,18 +73,18 @@ public class VendingMachine {
 	
 	public ArrayList<Coin> returnCoins(ArrayList<Coin> coins, Product product) {
 		double difference = calcChangeDue(coins, product);
-		while(difference > 0)
+		while(difference >= 0.1)
 			if(difference >= 0.25) {
 				quarterBank.remove(0);
 				Quarter quarter = new Quarter();
 				coinsToReturn.add(quarter);
 				difference -= 0.25;
-			} if (difference >= 0.1) {
+			} else if (difference >= 0.1) {
 				dimeBank.remove(0);
 				Dime dime = new Dime();
 				coinsToReturn.add(dime);
 				difference -= 10;
-			}
+			} 
 		return coinsToReturn;
 	}   
 	

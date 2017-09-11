@@ -290,7 +290,7 @@ public class VendingMachineTest {
 		double result = underTest.calcValueOfCoinsInQueue(resultAsArray);
 		
 		assertEquals(expectedCoinsValue, result, 0);
-	}    
+	}      
 	
 	@Test
 	public void shouldCalculateChangeDueAndReturnOneDime() {
@@ -304,7 +304,7 @@ public class VendingMachineTest {
 		ArrayList<Coin> resultAsArray = underTest.returnCoins(coinsInserted, soda);
 		double result = underTest.calcValueOfCoinsInQueue(resultAsArray);
 		
-		assertEquals(expectedCoinsValue, result, 0);
+		assertEquals(expectedCoinsValue, result, 0.1);
 	}
 	
 	private Coin generateQuarter() {
