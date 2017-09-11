@@ -304,7 +304,22 @@ public class VendingMachineTest {
 		ArrayList<Coin> resultAsArray = underTest.returnCoins(coinsInserted, soda);
 		double result = underTest.calcValueOfCoinsInQueue(resultAsArray);
 		
-		assertEquals(expectedCoinsValue, result, 0.1);
+		assertEquals(expectedCoinsValue, result, 0.01);
+	}
+	
+	@Test
+	public void shouldCalculateChangeDueAndReturnOneNickel() {
+		coinsInserted = underTest.queueCoins(quarter, quarter, quarter, quarter, nickel);
+		Soda soda = new Soda();
+		
+		ArrayList<Coin> expectedCoins = new ArrayList<Coin>();
+		expectedCoins.add(nickel);
+		double expectedCoinsValue = underTest.calcValueOfCoinsInQueue(expectedCoins);
+		
+		ArrayList<Coin> resultAsArray = underTest.returnCoins(coinsInserted, soda);
+		double result = underTest.calcValueOfCoinsInQueue(resultAsArray);
+		
+		assertEquals(expectedCoinsValue, result, 0.01);
 	}
 	
 	private Coin generateQuarter() {
