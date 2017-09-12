@@ -1,4 +1,4 @@
 
-public class Nickel {
+public class Nickel extends Coin {
 
 }

@@ -6,7 +6,6 @@ public class VendingMachine {
 	
 	private ArrayList<Coin> coinsToReturn = new ArrayList<Coin>();
 	
-//	private ArrayList<Coin> quarterBank = new ArrayList<Coin>();
 	private QuarterRepository quarterBank = new QuarterRepository();
 	private DimeRepository dimeBank = new DimeRepository();
 	private NickelRepository nickelBank = new NickelRepository();	
