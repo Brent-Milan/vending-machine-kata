@@ -85,10 +85,13 @@ public class VendingMachine {
 				Dime dime = new Dime();
 				coinsToReturn.add(dime);
 				difference -= 0.1;
-			} else if {
+			} else if (difference >= 0.05) {
 				nickelBank.remove(0);
+				Nickel nickel = new Nickel();
+				coinsToReturn.add(nickel);
 				difference -= 0.05;
 			}
+				
 		return coinsToReturn;
 	}   
 	
