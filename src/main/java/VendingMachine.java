@@ -8,7 +8,8 @@ public class VendingMachine {
 	
 	private QuarterRepository quarterBank = new QuarterRepository();
 	private DimeRepository dimeBank = new DimeRepository();
-	private NickelRepository nickelBank = new NickelRepository();	
+	private NickelRepository nickelBank = new NickelRepository();
+	private PennyRepository pennyBank = new PennyRepository();
 	
 	protected boolean sodaButtonIsPressed = false;
 	protected boolean chipsButtonIsPressed = false;
@@ -90,8 +91,12 @@ public class VendingMachine {
 				Nickel nickel = new Nickel();
 				coinsToReturn.add(nickel);
 				difference -= 0.05;
-			}
-				
+			} else if (difference >= 0.01) {
+				pennyBank.remove(0);
+				Penny penny = new Penny();
+				coinsToReturn.add(penny);
+				difference -= 0.05;
+			}		
 		return coinsToReturn;
 	}   
 	
