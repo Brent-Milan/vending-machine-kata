@@ -77,27 +77,47 @@ public class VendingMachine {
 		double difference = calcChangeDue(coins, product);
 		while(changeIsDue(difference))
 			if(isDueAQuarterOrMore(difference)) {
-				quarterBank.remove(0);
-				Quarter quarter = new Quarter();
-				coinsToReturn.add(quarter);
-				difference -= 0.25;
+				difference = removeQuarterFromBankAndReturnAsChange(difference);
 			} else if (isDueADimeOrMore(difference)) {
-				dimeBank.remove(0);
-				Dime dime = new Dime();
-				coinsToReturn.add(dime);
-				difference -= 0.1;
+				difference = removeDimeFromBankAndReturnAsChange(difference);
 			} else if (isDueANickelOrMore(difference)) {
-				nickelBank.remove(0);
-				Nickel nickel = new Nickel();
-				coinsToReturn.add(nickel);
-				difference -= 0.05;
+				difference = removeNickelFromBankAndReturnAsChange(difference);
 			} else if (isDueAPennyOrMore(difference)) {
-				pennyBank.remove(0);
-				Penny penny = new Penny();
-				coinsToReturn.add(penny);
-				difference -= 0.05;
+				difference = removePennyFromBankAndReturnAsChange(difference);
 			}	
 		return coinsToReturn;
+	}
+
+	private double removePennyFromBankAndReturnAsChange(double difference) {
+		pennyBank.remove(0);
+		Penny penny = new Penny();
+		coinsToReturn.add(penny);
+		difference -= 0.05;
+		return difference;
+	}
+
+	private double removeNickelFromBankAndReturnAsChange(double difference) {
+		nickelBank.remove(0);
+		Nickel nickel = new Nickel();
+		coinsToReturn.add(nickel);
+		difference -= 0.05;
+		return difference;
+	}
+
+	private double removeDimeFromBankAndReturnAsChange(double difference) {
+		dimeBank.remove(0);
+		Dime dime = new Dime();
+		coinsToReturn.add(dime);
+		difference -= 0.1;
+		return difference;
+	}
+
+	private double removeQuarterFromBankAndReturnAsChange(double difference) {
+		quarterBank.remove(0);
+		Quarter quarter = new Quarter();
+		coinsToReturn.add(quarter);
+		difference -= 0.25;
+		return difference;
 	}
 
 	private boolean isDueAPennyOrMore(double difference) {
