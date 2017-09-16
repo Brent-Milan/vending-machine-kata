@@ -29,6 +29,15 @@ public class NickelRepositoryTest {
 		return Collections.frequency(nickels, nickel);
 	}
 	
+	@Test
+	public void shouldReturnAFrequencyof2() {
+		underTest.stockNickelsInBank(nickel, nickel, nickel);
+		
+		underTest.remove(0);
+		int expected = 2;
+		
+		assertEquals(expected, countNickels(underTest.nickelRepo));
+	}
 	
 
 }

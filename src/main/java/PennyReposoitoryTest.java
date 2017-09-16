@@ -29,5 +29,15 @@ public class PennyReposoitoryTest {
 	public int countPennies(ArrayList<Penny> pennies) {
 		return Collections.frequency(pennies, penny);
 	}
+	
+	@Test
+	public void shouldReturnAFrequencyof2() {
+		underTest.stockPenniesInBank(penny, penny, penny);
+		
+		underTest.remove(0);
+		int expected = 2;
+		
+		assertEquals(expected, countPennies(underTest.pennyRepo));
+	}
 
 }

@@ -29,4 +29,14 @@ public class DimeRepositoryTest {
 	public int countDimes(ArrayList<Dime> dimes) {
 		return Collections.frequency(dimes, dime);
 	}
+	
+	@Test
+	public void shouldReturnAFrequencyof2() {
+		underTest.stockDimesInBank(dime, dime, dime);
+		
+		underTest.remove(0);
+		int expected = 2;
+		
+		assertEquals(expected, countDimes(underTest.dimeRepo));
+	}
 }
