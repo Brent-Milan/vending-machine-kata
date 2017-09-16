@@ -8,6 +8,14 @@ public class PennyRepository {
 		return pennyRepo;
 	}
 	
+	public void remove(int indexOfElementToRemove) {
+		for(int index = 0; index < pennyRepo.size(); index++) {
+			if(index == indexOfElementToRemove) {
+				pennyRepo.remove(index);
+			} 
+		}
+	}
+	
 	public ArrayList<Penny> stockPenniesInBank(Penny... penniesAsArrays) {
 		for(int index = 0; index < penniesAsArrays.length; index++) {
 			pennyRepo.add(penniesAsArrays[index]);
