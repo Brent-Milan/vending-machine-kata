@@ -39,6 +39,6 @@ public class QuarterRepositoryTest {
 	public int countQuarters(ArrayList<Quarter> quarters) {
 		return Collections.frequency(quarters, quarter);
 	}
-
+ 
 	
 }

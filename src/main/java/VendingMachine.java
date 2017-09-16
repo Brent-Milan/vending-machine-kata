@@ -75,29 +75,49 @@ public class VendingMachine {
 	
 	public ArrayList<Coin> returnCoins(ArrayList<Coin> coins, Product product) {
 		double difference = calcChangeDue(coins, product);
-		while(difference >= 0.01)
-			if(difference >= 0.25) {
+		while(changeIsDue(difference))
+			if(isDueAQuarterOrMore(difference)) {
 				quarterBank.remove(0);
 				Quarter quarter = new Quarter();
 				coinsToReturn.add(quarter);
 				difference -= 0.25;
-			} else if (difference >= 0.1) {
+			} else if (isDueADimeOrMore(difference)) {
 				dimeBank.remove(0);
 				Dime dime = new Dime();
 				coinsToReturn.add(dime);
 				difference -= 0.1;
-			} else if (difference >= 0.05) {
+			} else if (isDueANickelOrMore(difference)) {
 				nickelBank.remove(0);
 				Nickel nickel = new Nickel();
 				coinsToReturn.add(nickel);
 				difference -= 0.05;
-			} else if (difference >= 0.01) {
+			} else if (isDueAPennyOrMore(difference)) {
 				pennyBank.remove(0);
 				Penny penny = new Penny();
 				coinsToReturn.add(penny);
 				difference -= 0.05;
-			}		
+			}	
 		return coinsToReturn;
+	}
+
+	private boolean isDueAPennyOrMore(double difference) {
+		return difference >= 0.01;
+	}
+
+	private boolean isDueANickelOrMore(double difference) {
+		return difference >= 0.05;
+	}
+
+	private boolean isDueADimeOrMore(double difference) {
+		return difference >= 0.1;
+	}
+
+	private boolean isDueAQuarterOrMore(double difference) {
+		return difference >= 0.25;
+	}
+
+	private boolean changeIsDue(double difference) {
+		return difference >= 0.001;
 	}   
 	
 	public boolean isSufficientPayment(ArrayList<Coin> coins, Product product) {
