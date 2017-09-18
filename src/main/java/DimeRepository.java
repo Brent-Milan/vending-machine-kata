@@ -22,4 +22,8 @@ public class DimeRepository {
 		}
 			return dimeRepo;
 	}
+
+	protected boolean isStocked() {
+		return dimeRepo.size() >= 2;
+	}
 }

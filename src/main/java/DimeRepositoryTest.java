@@ -26,10 +26,6 @@ public class DimeRepositoryTest {
 		assertEquals(expected, countDimes(underTest.dimeRepo));
 	}
 
-	public int countDimes(ArrayList<Dime> dimes) {
-		return Collections.frequency(dimes, dime);
-	}
-	
 	@Test
 	public void shouldReturnAFrequencyof2() {
 		underTest.stockDimesInBank(dime, dime, dime);
@@ -39,4 +35,15 @@ public class DimeRepositoryTest {
 		
 		assertEquals(expected, countDimes(underTest.dimeRepo));
 	}
+	
+	@Test
+	public void shouldReturnFalse() {
+		underTest.stockDimesInBank(dime);
+		
+		assertEquals(false, underTest.isStocked());
+	}
+	public int countDimes(ArrayList<Dime> dimes) {
+		return Collections.frequency(dimes, dime);
+	}
+	
 }
