@@ -36,9 +36,15 @@ public class QuarterRepositoryTest {
 		assertEquals(expected, result);
 	}
 
+	@Test
+	public void shouldReturnFalse() {
+		underTest.stockQuartersInBank(quarter, quarter, quarter, quarter);
+		
+		assertEquals(false, underTest.isStocked());
+	}
+	
 	public int countQuarters(ArrayList<Quarter> quarters) {
 		return Collections.frequency(quarters, quarter);
 	}
  
-	
 }

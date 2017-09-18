@@ -337,6 +337,16 @@ public class VendingMachineTest {
 		assertEquals(expectedCoinsValue, result, 0.01);
 	}
 	
+	@Test
+	public void shouldUpdateDisplayToReadExactChangeWhenChangeBankIsLow() {
+		coinsInserted = underTest.queueCoins();
+		Soda soda = new Soda(10);
+		
+		String expected = "EXACT CHANGE ONLY";
+		
+		assertEquals(expected, underTest.updateDisplay(coinsInserted, soda));
+	}
+	
 	private Coin generateQuarter() {
 		Coin quarter = new Coin(24.26, 5.67);
 		return quarter;

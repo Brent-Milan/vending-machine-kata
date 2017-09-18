@@ -22,4 +22,8 @@ public class QuarterRepository {
 		}
 		return quarterRepo;
 	}
+
+	protected boolean isStocked() {
+		return quarterRepo.size() > 4;	
+	}
 }

@@ -1,4 +1,5 @@
-import java.util.ArrayList; 
+import java.util.ArrayList;
+import java.util.List; 
 
 public class VendingMachine {
 
@@ -14,7 +15,7 @@ public class VendingMachine {
 	protected boolean sodaButtonIsPressed = false;
 	protected boolean chipsButtonIsPressed = false;
 	protected boolean candyButtonIsPressed = false;
-
+	
 	public double identifyCoin(Coin coin) {
 		double size = coin.getSizeInMillimeters();
 		double weight = coin.getWeightInGrams();
@@ -154,6 +155,9 @@ public class VendingMachine {
 		if(productButtonIsPressed()) { 
 			return "PRICE " + product.getCostAsString();
 		}
+		if(changeBankIsLow()) {
+			return "EXACT CHANGE ONLY";
+		}
 		if(coins.isEmpty() || coins == null) { 
 			return "INSERT COIN";
 		} else {   
@@ -161,6 +165,14 @@ public class VendingMachine {
 		}       
 	}   
 	
+//	private void changeBankIsLow() {
+//		if(quarterBan.isStocked() && dimeBank.IsStocked() && nickelBank.IsStocked() && pennyBank.IsStocked()) {
+//		return true; 
+//		} else {
+//			return false;
+//		}
+//	}
+
 	public String displaySodaCost() {
 		Soda soda = new Soda();
 		return soda.getCostAsString();
