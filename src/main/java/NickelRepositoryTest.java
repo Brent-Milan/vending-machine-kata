@@ -25,10 +25,6 @@ public class NickelRepositoryTest {
 		assertEquals(expected, countNickels(underTest.nickelRepo));
 	}
 	
-	public int countNickels(ArrayList<Nickel> nickels) {
-		return Collections.frequency(nickels, nickel);
-	}
-	
 	@Test
 	public void shouldReturnAFrequencyof2() {
 		underTest.stockNickelsInBank(nickel, nickel, nickel);
@@ -39,5 +35,15 @@ public class NickelRepositoryTest {
 		assertEquals(expected, countNickels(underTest.nickelRepo));
 	}
 	
+	@Test
+	public void shouldReturnFalse() {
+		underTest.stockNickelsInBank(nickel);
+		
+		assertEquals(false, underTest.isStocked());
+	}
+	
+	public int countNickels(ArrayList<Nickel> nickels) {
+		return Collections.frequency(nickels, nickel);
+	}
 
 }

@@ -22,4 +22,8 @@ public class NickelRepository {
 		}
 		return nickelRepo;
 	}
+
+	public boolean isStocked() {
+		return nickelRepo.size() > 1;
+	}
 }

@@ -42,6 +42,7 @@ public class DimeRepositoryTest {
 		
 		assertEquals(false, underTest.isStocked());
 	}
+	
 	public int countDimes(ArrayList<Dime> dimes) {
 		return Collections.frequency(dimes, dime);
 	}
