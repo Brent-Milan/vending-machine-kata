@@ -187,26 +187,26 @@ public class VendingMachineTest {
 	} 
 	
 	@Test
-	public void shouldDisplayOutOfStockWhenSodaInventoryCountIsZero() {
+	public void shouldDisplaySoldOutWhenSodaInventoryCountIsZero() {
 		underTest.sodaButtonIsPressed = true;
 		Soda soda = new Soda(0);
-		String expected = "Out of Stock";
+		String expected = "SOLD OUT";
 		assertEquals(expected, underTest.updateDisplay(coinsInserted, soda));
 	}
 	
 	@Test
-	public void shouldDisplayOutOfStockWhenCandyInventoryCountIsZero() {
+	public void shouldDisplaySoldOutWhenCandyInventoryCountIsZero() {
 		underTest.candyButtonIsPressed = true;
 		Candy candy = new Candy(0);
-		String expected = "Out of Stock";
+		String expected = "SOLD OUT";
 		assertEquals(expected, underTest.updateDisplay(coinsInserted, candy));
 	}
 	
 	@Test
-	public void shouldDisplayOutOfStockWhenChipsInventoryCountIsZero() {
+	public void shouldDisplaySoldOutWhenChipsInventoryCountIsZero() {
 		underTest.candyButtonIsPressed = true;
 		Chips bagOfChips = new Chips();
-		String expected = "Out of Stock";
+		String expected = "SOLD OUT";
 		assertEquals(expected, underTest.updateDisplay(coinsInserted, bagOfChips));
 	} 
 	

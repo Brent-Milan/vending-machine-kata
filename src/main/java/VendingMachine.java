@@ -15,7 +15,6 @@ public class VendingMachine {
 	protected boolean chipsButtonIsPressed = false;
 	protected boolean candyButtonIsPressed = false;
 
-	
 	public double identifyCoin(Coin coin) {
 		double size = coin.getSizeInMillimeters();
 		double weight = coin.getWeightInGrams();
@@ -146,7 +145,7 @@ public class VendingMachine {
 	
 	public String updateDisplay(ArrayList<Coin> coins, Product product) {
 		if(buttonIsPressedAndProductIsOutOfStock(product)) {
-			return "Out of Stock";
+			return "SOLD OUT";
 		}
 		if(paymentIsSufficientAndProductIsInStock(product)) {
 			vendSelectedProduct(coins, product); 
