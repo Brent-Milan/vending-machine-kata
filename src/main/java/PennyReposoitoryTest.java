@@ -26,10 +26,6 @@ public class PennyReposoitoryTest {
 		assertEquals(expected, countPennies(underTest.pennyRepo));
 	}
 
-	public int countPennies(ArrayList<Penny> pennies) {
-		return Collections.frequency(pennies, penny);
-	}
-	
 	@Test
 	public void shouldReturnAFrequencyof2() {
 		underTest.stockPenniesInBank(penny, penny, penny);
@@ -39,5 +35,15 @@ public class PennyReposoitoryTest {
 		
 		assertEquals(expected, countPennies(underTest.pennyRepo));
 	}
+	
+	@Test
+	public void shouldReturnFalse() {
+		underTest.stockPenniesInBank(penny, penny, penny, penny, penny, penny, penny, penny);
+		
+		assertEquals(false, underTest.isStocked());
+	}
 
+	public int countPennies(ArrayList<Penny> pennies) {
+		return Collections.frequency(pennies, penny);
+	}
 }

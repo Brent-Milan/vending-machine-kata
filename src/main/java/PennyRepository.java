@@ -22,4 +22,8 @@ public class PennyRepository {
 		}
 		return pennyRepo;
 	}
+
+	protected boolean isStocked() {
+		return pennyRepo.size() > 8;
+	}
 }
