@@ -182,6 +182,7 @@ public class VendingMachineTest {
 	public void shouldReturnInsertCoinStringForInsufficientCoinValue() {
 		Soda cola = new Soda();	
 		String expected = "INSERT COIN";
+		underTest.changeBankIsLow = false;
 		
 		assertEquals(expected, underTest.updateDisplay(coinsInserted, cola));
 	} 
@@ -341,6 +342,7 @@ public class VendingMachineTest {
 	public void shouldUpdateDisplayToReadExactChangeWhenChangeBankIsLow() {
 		coinsInserted = underTest.queueCoins();
 		Soda soda = new Soda(10);
+		underTest.changeBankIsLow = true;
 		
 		String expected = "EXACT CHANGE ONLY";
 		

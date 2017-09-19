@@ -15,6 +15,8 @@ public class VendingMachine {
 	protected boolean sodaButtonIsPressed = false;
 	protected boolean chipsButtonIsPressed = false;
 	protected boolean candyButtonIsPressed = false;
+
+	protected boolean changeBankIsLow;
 	
 	public double identifyCoin(Coin coin) {
 		double size = coin.getSizeInMillimeters();
@@ -155,7 +157,7 @@ public class VendingMachine {
 		if(productButtonIsPressed()) { 
 			return "PRICE " + product.getCostAsString();
 		}
-		if(changeBankIsLow()) {
+		if(changeBankIsLow == true) {
 			return "EXACT CHANGE ONLY";
 		}
 		if(coins.isEmpty() || coins == null) { 
@@ -165,13 +167,13 @@ public class VendingMachine {
 		}       
 	}   
 	
-//	private void changeBankIsLow() {
-//		if(quarterBan.isStocked() && dimeBank.IsStocked() && nickelBank.IsStocked() && pennyBank.IsStocked()) {
-//		return true; 
-//		} else {
-//			return false;
-//		}
-//	}
+	protected void checkIfBankChangeIsLow() {
+		if(quarterBank.isStocked() && dimeBank.isStocked() && nickelBank.isStocked() && pennyBank.isStocked()) {
+			changeBankIsLow = false;
+		} else {
+			changeBankIsLow = true;
+		}
+	}
 
 	public String displaySodaCost() {
 		Soda soda = new Soda();
