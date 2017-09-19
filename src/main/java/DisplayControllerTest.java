@@ -115,5 +115,27 @@ public class DisplayControllerTest {
 		
 		assertEquals(expected, soda.getInventoryCount());
 	} 
+	
+	@Test
+	public void shouldCheckForSufficentPaymentAndThenReduceCandyInventoryCountByOne() {
+		Candy candy = new Candy(20);
+		bankController.coinsInserted = bankController.queueCoins(quarter, quarter, dime, dime, dime, nickel, nickel, nickel, penny, penny, penny, penny, penny);
+		underTest.vendSelectedProduct(bankController.getCoinsInserted(), candy);
+		
+		int expected = 19;
+		
+		assertEquals(expected, candy.getInventoryCount());
+	} 
+	
+	@Test
+	public void shouldCheckForSufficentPaymentAndThenReduceChipsInventoryCountByOne() {
+		Chips bagOfChips = new Chips(20);
+		bankController.coinsInserted = bankController.queueCoins(quarter, quarter, dime, dime, dime, nickel, nickel, nickel, penny, penny, penny, penny, penny);
+		underTest.vendSelectedProduct(bankController.getCoinsInserted(), bagOfChips);
+		
+		int expected = 19;
+		
+		assertEquals(expected, bagOfChips.getInventoryCount());
+	} 
 
 }
