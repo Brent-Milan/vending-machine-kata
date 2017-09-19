@@ -7,10 +7,15 @@ public class VendingMachine {
 	
 	private ArrayList<Coin> coinsToReturn = new ArrayList<Coin>();
 	
-	private QuarterRepository quarterBank = new QuarterRepository();
-	private DimeRepository dimeBank = new DimeRepository();
-	private NickelRepository nickelBank = new NickelRepository();
-	private PennyRepository pennyBank = new PennyRepository();
+	
+	public ArrayList<Coin> getCoinsInserted() {
+		return coinsInserted;
+	}
+
+	protected QuarterRepository quarterBank = new QuarterRepository();
+	protected DimeRepository dimeBank = new DimeRepository();
+	protected NickelRepository nickelBank = new NickelRepository();
+	protected PennyRepository pennyBank = new PennyRepository();
 	
 	protected boolean sodaButtonIsPressed = false;
 	protected boolean chipsButtonIsPressed = false;
@@ -50,7 +55,7 @@ public class VendingMachine {
 		return size == 24.26 && weight == 5.67;
 	}  
 	
-	public void addCoin(Coin coin) {
+	public void insertCoin(Coin coin) {
 		coinsInserted.add(coin);
 	}
 	
@@ -146,6 +151,10 @@ public class VendingMachine {
 		return calcValueOfCoinsInQueue(coins) >= product.getCost();
 	}
 	
+	/*************************************
+	 *  updateDisplay and Related Methods
+	 *************************************/
+	
 	public String updateDisplay(ArrayList<Coin> coins, Product product) {
 		if(buttonIsPressedAndProductIsOutOfStock(product)) {
 			return "SOLD OUT";
@@ -196,6 +205,10 @@ public class VendingMachine {
 		}
 	} 
 	
+	/******************************
+	 * Button-Related Booleans
+	 *****************************/
+	
 	public boolean buttonIsPressedAndProductIsOutOfStock(Product product) {
 		if( (sodaButtonIsPressed && product.getInventoryCount() == 0) || 
 			(candyButtonIsPressed && product.getInventoryCount() == 0) ||
@@ -220,6 +233,8 @@ public class VendingMachine {
 		}
 		return false;
 	}
+	
+	/**/
 	
 	public ArrayList<Coin> getCoinsToReturn() {
 		return coinsToReturn;
