@@ -3,7 +3,7 @@ import java.util.List;
 
 public class VendingMachine {
 
-	private ArrayList<Coin> coinsInserted = new ArrayList<Coin>();
+	protected ArrayList<Coin> coinsInserted = new ArrayList<Coin>();
 	
 	private ArrayList<Coin> coinsToReturn = new ArrayList<Coin>();
 	

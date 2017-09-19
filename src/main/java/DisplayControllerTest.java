@@ -7,6 +7,11 @@ public class DisplayControllerTest {
 	
 	DisplayController underTest;
 	VendingMachine bankController;
+	
+	Quarter quarter = new Quarter();
+	Dime dime = new Dime();
+	Nickel nickel = new Nickel();
+	Penny penny = new Penny();;
 
 	@Before
 	public void setUp() throws Exception {
@@ -65,6 +70,50 @@ public class DisplayControllerTest {
 		
 		String expected = "PRICE 0.65";
 		assertEquals(expected, underTest.updateDisplay(bankController.getCoinsInserted(), candy));
+	} 
+	
+	@Test
+	public void shouldReturnInsertCoinStringForInsufficientCoinValue() {
+		Soda cola = new Soda();	
+		String expected = "INSERT COIN";
+		underTest.changeBankIsLow = false;
+		
+		assertEquals(expected, underTest.updateDisplay(bankController.getCoinsInserted(), cola));
+	} 
+	
+	@Test
+	public void shouldDisplaySoldOutWhenSodaInventoryCountIsZero() {
+		underTest.sodaButtonIsPressed = true;
+		Soda soda = new Soda(0);
+		String expected = "SOLD OUT";
+		assertEquals(expected, underTest.updateDisplay(bankController.getCoinsInserted(), soda));
+	}
+	
+	@Test
+	public void shouldDisplaySoldOutWhenCandyInventoryCountIsZero() {
+		underTest.candyButtonIsPressed = true;
+		Candy candy = new Candy(0);
+		String expected = "SOLD OUT";
+		assertEquals(expected, underTest.updateDisplay(bankController.getCoinsInserted(), candy));
+	}
+	
+	@Test
+	public void shouldDisplaySoldOutWhenChipsInventoryCountIsZero() {
+		underTest.candyButtonIsPressed = true;
+		Chips bagOfChips = new Chips();
+		String expected = "SOLD OUT";
+		assertEquals(expected, underTest.updateDisplay(bankController.getCoinsInserted(), bagOfChips));
+	} 
+	
+	@Test
+	public void shouldCheckForSufficentPaymentAndThenReduceSodaInventoryCountByOne() {
+		Soda soda = new Soda(20);
+		bankController.coinsInserted = bankController.queueCoins(quarter, quarter, dime, dime, dime, nickel, nickel, nickel, penny, penny, penny, penny, penny);
+		underTest.vendSelectedProduct(bankController.getCoinsInserted(), soda);
+		
+		int expected = 19;
+		
+		assertEquals(expected, soda.getInventoryCount());
 	} 
 
 }

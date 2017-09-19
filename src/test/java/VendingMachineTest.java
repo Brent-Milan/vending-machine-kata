@@ -177,50 +177,50 @@ public class VendingMachineTest {
 //		String expected = "PRICE 0.65";
 //		assertEquals(expected, underTest.updateDisplay(coinsInserted, candy));
 //	} 
-	
-	@Test
-	public void shouldReturnInsertCoinStringForInsufficientCoinValue() {
-		Soda cola = new Soda();	
-		String expected = "INSERT COIN";
-		underTest.changeBankIsLow = false;
-		
-		assertEquals(expected, underTest.updateDisplay(coinsInserted, cola));
-	} 
-	
-	@Test
-	public void shouldDisplaySoldOutWhenSodaInventoryCountIsZero() {
-		underTest.sodaButtonIsPressed = true;
-		Soda soda = new Soda(0);
-		String expected = "SOLD OUT";
-		assertEquals(expected, underTest.updateDisplay(coinsInserted, soda));
-	}
-	
-	@Test
-	public void shouldDisplaySoldOutWhenCandyInventoryCountIsZero() {
-		underTest.candyButtonIsPressed = true;
-		Candy candy = new Candy(0);
-		String expected = "SOLD OUT";
-		assertEquals(expected, underTest.updateDisplay(coinsInserted, candy));
-	}
-	
-	@Test
-	public void shouldDisplaySoldOutWhenChipsInventoryCountIsZero() {
-		underTest.candyButtonIsPressed = true;
-		Chips bagOfChips = new Chips();
-		String expected = "SOLD OUT";
-		assertEquals(expected, underTest.updateDisplay(coinsInserted, bagOfChips));
-	} 
-	
-	@Test
-	public void shouldCheckForSufficentPaymentAndThenReduceSodaInventoryCountByOne() {
-		Soda soda = new Soda(20);
-		coinsInserted = underTest.queueCoins(quarter, quarter, dime, dime, dime, nickel, nickel, nickel, penny, penny, penny, penny, penny);
-		underTest.vendSelectedProduct(coinsInserted, soda);
-		
-		int expected = 19;
-		
-		assertEquals(expected, soda.getInventoryCount());
-	} 
+//	
+//	@Test
+//	public void shouldReturnInsertCoinStringForInsufficientCoinValue() {
+//		Soda cola = new Soda();	
+//		String expected = "INSERT COIN";
+//		underTest.changeBankIsLow = false;
+//		
+//		assertEquals(expected, underTest.updateDisplay(coinsInserted, cola));
+//	} 
+//	
+//	@Test
+//	public void shouldDisplaySoldOutWhenSodaInventoryCountIsZero() {
+//		underTest.sodaButtonIsPressed = true;
+//		Soda soda = new Soda(0);
+//		String expected = "SOLD OUT";
+//		assertEquals(expected, underTest.updateDisplay(coinsInserted, soda));
+//	}
+//	
+//	@Test
+//	public void shouldDisplaySoldOutWhenCandyInventoryCountIsZero() {
+//		underTest.candyButtonIsPressed = true;
+//		Candy candy = new Candy(0);
+//		String expected = "SOLD OUT";
+//		assertEquals(expected, underTest.updateDisplay(coinsInserted, candy));
+//	}
+//	
+//	@Test
+//	public void shouldDisplaySoldOutWhenChipsInventoryCountIsZero() {
+//		underTest.candyButtonIsPressed = true;
+//		Chips bagOfChips = new Chips();
+//		String expected = "SOLD OUT";
+//		assertEquals(expected, underTest.updateDisplay(coinsInserted, bagOfChips));
+//	} 
+//	
+//	@Test
+//	public void shouldCheckForSufficentPaymentAndThenReduceSodaInventoryCountByOne() {
+//		Soda soda = new Soda(20);
+//		coinsInserted = underTest.queueCoins(quarter, quarter, dime, dime, dime, nickel, nickel, nickel, penny, penny, penny, penny, penny);
+//		underTest.vendSelectedProduct(coinsInserted, soda);
+//		
+//		int expected = 19;
+//		
+//		assertEquals(expected, soda.getInventoryCount());
+//	} 
 	
 	@Test
 	public void shouldCheckForSufficentPaymentAndThenReduceCandyInventoryCountByOne() {
