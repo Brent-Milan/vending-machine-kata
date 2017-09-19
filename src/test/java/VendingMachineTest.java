@@ -145,38 +145,38 @@ public class VendingMachineTest {
 //		assertEquals(expected, underTest.displayCandyCost());
 //	}
 	
-	@Test
-	public void shouldReturnFalseByDefault() {
-		assertFalse(underTest.sodaButtonIsPressed);
-	}
-	
-	@Test
-	public void shouldCheckConditionalsAndReturnPriceStringForSoda() {
-		underTest.sodaButtonIsPressed = true;
-		Soda soda = new Soda(10);
-		
-		String expected = "PRICE 1.00";
-		assertEquals(expected, underTest.updateDisplay(coinsInserted, soda)); 
-		
-	}
-	
-	@Test
-	public void shouldReturnExpectedProductPriceStringForChips() {
-		underTest.chipsButtonIsPressed = true;
-		Chips bagOfChips = new Chips(10);
-		
-		String expected = "PRICE 0.50";
-		assertEquals(expected, underTest.updateDisplay(coinsInserted, bagOfChips));
-	} 
-	
-	@Test
-	public void shouldReturnExpectedProductPriceStringForCandy() {
-		underTest.candyButtonIsPressed = true;
-		Candy candy = new Candy(10);
-		
-		String expected = "PRICE 0.65";
-		assertEquals(expected, underTest.updateDisplay(coinsInserted, candy));
-	} 
+//	@Test
+//	public void shouldReturnFalseByDefault() {
+//		assertFalse(underTest.sodaButtonIsPressed);
+//	}
+//	
+//	@Test
+//	public void shouldCheckConditionalsAndReturnPriceStringForSoda() {
+//		underTest.sodaButtonIsPressed = true;
+//		Soda soda = new Soda(10);
+//		
+//		String expected = "PRICE 1.00";
+//		assertEquals(expected, underTest.updateDisplay(coinsInserted, soda)); 
+//		
+//	}
+//	
+//	@Test
+//	public void shouldReturnExpectedProductPriceStringForChips() {
+//		underTest.chipsButtonIsPressed = true;
+//		Chips bagOfChips = new Chips(10);
+//		
+//		String expected = "PRICE 0.50";
+//		assertEquals(expected, underTest.updateDisplay(coinsInserted, bagOfChips));
+//	} 
+//	
+//	@Test
+//	public void shouldReturnExpectedProductPriceStringForCandy() {
+//		underTest.candyButtonIsPressed = true;
+//		Candy candy = new Candy(10);
+//		
+//		String expected = "PRICE 0.65";
+//		assertEquals(expected, underTest.updateDisplay(coinsInserted, candy));
+//	} 
 	
 	@Test
 	public void shouldReturnInsertCoinStringForInsufficientCoinValue() {
