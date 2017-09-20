@@ -1,5 +1,7 @@
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -137,5 +139,49 @@ public class DisplayControllerTest {
 		
 		assertEquals(expected, bagOfChips.getInventoryCount());
 	} 
+
+	@Test
+	public void shouldDisplayThankYouAfterCheckingForSufficientPaymentAndInventoryCountForSoda() {
+		Soda soda = new Soda(10);
+		underTest.sodaButtonIsPressed = true;
+		bankController.coinsInserted = bankController.queueCoins(quarter, quarter, dime, dime, dime, nickel, nickel, nickel, penny, penny, penny, penny, penny);
+		
+		String expected = "THANK YOU";
+		
+		assertEquals(expected, underTest.updateDisplay(bankController.getCoinsInserted(), soda));
+	}
+	
+	@Test 
+	public void shouldDisplayThankYouAfterCheckingForSufficientPaymentAndInventoryCountForCandy() {
+		Candy candy = new Candy(10);
+		underTest.candyButtonIsPressed = true;
+		bankController.coinsInserted = bankController.queueCoins(quarter, quarter, quarter);
+		
+		String expected = "THANK YOU";
+		
+		assertEquals(expected, underTest.updateDisplay(bankController.getCoinsInserted(), candy));
+	}
+	
+	@Test
+	public void shouldDisplayThankYouAfterCheckingForSufficientPaymentAndInventoryCountForChips() {
+		Chips bagOfChips = new Chips(10);
+		underTest.chipsButtonIsPressed = true;
+		bankController.coinsInserted = bankController.queueCoins(quarter, quarter, quarter);
+		
+		String expected = "THANK YOU";
+		
+		assertEquals(expected, underTest.updateDisplay(bankController.getCoinsInserted(), bagOfChips));
+	}
+	
+	@Test
+	public void shouldUpdateDisplayToReadExactChangeWhenChangeBankIsLow() {
+		bankController.coinsInserted = bankController.queueCoins();
+		Soda soda = new Soda(10);
+		underTest.changeBankIsLow = true;
+		
+		String expected = "EXACT CHANGE ONLY";
+		
+		assertEquals(expected, underTest.updateDisplay(bankController.getCoinsInserted(), soda));
+	}
 
 }

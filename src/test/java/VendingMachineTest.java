@@ -232,50 +232,50 @@ public class VendingMachineTest {
 //		
 //		assertEquals(expected, candy.getInventoryCount());
 //	}  
+//	
+//	@Test
+//	public void shouldCheckForSufficentPaymentAndThenReduceChipsInventoryCountByOne() {
+//		Chips bagOfChips = new Chips(20);
+//		coinsInserted = underTest.queueCoins(quarter, quarter, dime, dime, dime, nickel, nickel, nickel, penny, penny, penny, penny, penny);
+//		underTest.vendSelectedProduct(coinsInserted, bagOfChips);
+//		
+//		int expected = 19;
+//		
+//		assertEquals(expected, bagOfChips.getInventoryCount());
+//	}  
 	
-	@Test
-	public void shouldCheckForSufficentPaymentAndThenReduceChipsInventoryCountByOne() {
-		Chips bagOfChips = new Chips(20);
-		coinsInserted = underTest.queueCoins(quarter, quarter, dime, dime, dime, nickel, nickel, nickel, penny, penny, penny, penny, penny);
-		underTest.vendSelectedProduct(coinsInserted, bagOfChips);
-		
-		int expected = 19;
-		
-		assertEquals(expected, bagOfChips.getInventoryCount());
-	}  
-	
-	@Test
-	public void shouldDisplayThankYouAfterCheckingForSufficientPaymentAndInventoryCountForSoda() {
-		Soda soda = new Soda(10);
-		underTest.sodaButtonIsPressed = true;
-		coinsInserted = underTest.queueCoins(quarter, quarter, dime, dime, dime, nickel, nickel, nickel, penny, penny, penny, penny, penny);
-		
-		String expected = "THANK YOU";
-		
-		assertEquals(expected, underTest.updateDisplay(coinsInserted, soda));
-	}
-	
-	@Test 
-	public void shouldDisplayThankYouAfterCheckingForSufficientPaymentAndInventoryCountForCandy() {
-		Candy candy = new Candy(10);
-		underTest.candyButtonIsPressed = true;
-		coinsInserted = underTest.queueCoins(quarter, quarter, quarter);
-		
-		String expected = "THANK YOU";
-		
-		assertEquals(expected, underTest.updateDisplay(coinsInserted, candy));
-	}
-	
-	@Test
-	public void shouldDisplayThankYouAfterCheckingForSufficientPaymentAndInventoryCountForChips() {
-		Chips bagOfChips = new Chips(10);
-		underTest.chipsButtonIsPressed = true;
-		coinsInserted = underTest.queueCoins(quarter, quarter, quarter);
-		
-		String expected = "THANK YOU";
-		
-		assertEquals(expected, underTest.updateDisplay(coinsInserted, bagOfChips));
-	}
+//	@Test
+//	public void shouldDisplayThankYouAfterCheckingForSufficientPaymentAndInventoryCountForSoda() {
+//		Soda soda = new Soda(10);
+//		underTest.sodaButtonIsPressed = true;
+//		coinsInserted = underTest.queueCoins(quarter, quarter, dime, dime, dime, nickel, nickel, nickel, penny, penny, penny, penny, penny);
+//		
+//		String expected = "THANK YOU";
+//		
+//		assertEquals(expected, underTest.updateDisplay(coinsInserted, soda));
+//	}
+//	
+//	@Test 
+//	public void shouldDisplayThankYouAfterCheckingForSufficientPaymentAndInventoryCountForCandy() {
+//		Candy candy = new Candy(10);
+//		underTest.candyButtonIsPressed = true;
+//		coinsInserted = underTest.queueCoins(quarter, quarter, quarter);
+//		
+//		String expected = "THANK YOU";
+//		
+//		assertEquals(expected, underTest.updateDisplay(coinsInserted, candy));
+//	}
+//	
+//	@Test
+//	public void shouldDisplayThankYouAfterCheckingForSufficientPaymentAndInventoryCountForChips() {
+//		Chips bagOfChips = new Chips(10);
+//		underTest.chipsButtonIsPressed = true;
+//		coinsInserted = underTest.queueCoins(quarter, quarter, quarter);
+//		
+//		String expected = "THANK YOU";
+//		
+//		assertEquals(expected, underTest.updateDisplay(coinsInserted, bagOfChips));
+//	}
 	
 
 	@Test
