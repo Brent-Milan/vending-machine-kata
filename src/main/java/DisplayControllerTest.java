@@ -8,7 +8,7 @@ import org.junit.Test;
 public class DisplayControllerTest {
 	
 	DisplayController underTest;
-	VendingMachine bankController;
+	BankController bankController;
 	
 	Quarter quarter = new Quarter();
 	Dime dime = new Dime();
@@ -18,7 +18,7 @@ public class DisplayControllerTest {
 	@Before
 	public void setUp() throws Exception {
 		underTest = new DisplayController();
-		bankController = underTest.bankController;
+		bankController = underTest.bank;
 	}
 
 	@Test

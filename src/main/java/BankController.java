@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List; 
 
-public class VendingMachine {
+public class BankController {
 
 	protected ArrayList<Coin> coinsInserted = new ArrayList<Coin>();
 	
@@ -16,10 +16,6 @@ public class VendingMachine {
 	protected DimeRepository dimeBank = new DimeRepository();
 	protected NickelRepository nickelBank = new NickelRepository();
 	protected PennyRepository pennyBank = new PennyRepository();
-	
-	protected boolean sodaButtonIsPressed = false;
-	protected boolean chipsButtonIsPressed = false;
-	protected boolean candyButtonIsPressed = false;
 
 	protected boolean changeBankIsLow;
 	
@@ -150,92 +146,7 @@ public class VendingMachine {
 	public boolean isSufficientPayment(ArrayList<Coin> coins, Product product) {
 		return calcValueOfCoinsInQueue(coins) >= product.getCost();
 	}
-	
-	/*************************************
-	 *  updateDisplay and Related Methods
-	 *************************************/
-	
-	public String updateDisplay(ArrayList<Coin> coins, Product product) {
-		if(buttonIsPressedAndProductIsOutOfStock(product)) {
-			return "SOLD OUT";
-		}
-		if(paymentIsSufficientAndProductIsInStock(product)) {
-			vendSelectedProduct(coins, product); 
-			return "THANK YOU"; 
-		} 
-		if(productButtonIsPressed()) { 
-			return "PRICE " + product.getCostAsString();
-		}
-		if(changeBankIsLow == true) {
-			return "EXACT CHANGE ONLY";
-		}
-		if(coins.isEmpty() || coins == null) { 
-			return "INSERT COIN";
-		} else {   
-			return "error"; 
-		}       
-	}   
-	
-	protected void checkIfBankChangeIsLow() {
-		if(quarterBank.isStocked() && dimeBank.isStocked() && nickelBank.isStocked() && pennyBank.isStocked()) {
-			changeBankIsLow = false;
-		} else {
-			changeBankIsLow = true;
-		}
-	}
 
-	public String displaySodaCost() {
-		Soda soda = new Soda();
-		return soda.getCostAsString();
-	} 
-	
-	public String displayChipsCost() {
-		Chips bagOfChips = new Chips();
-		return bagOfChips.getCostAsString();
-	}
-	
-	public String displayCandyCost() {
-		Candy candy = new Candy();
-		return candy.getCostAsString();
-	}
-	
-	public void vendSelectedProduct(ArrayList<Coin> coins, Product product) {
-		if(isSufficientPayment(coins, product)) {
-			product.vendItem();
-		}
-	} 
-	
-	/******************************
-	 * Button-Related Booleans
-	 *****************************/
-	
-	public boolean buttonIsPressedAndProductIsOutOfStock(Product product) {
-		if( (sodaButtonIsPressed && product.getInventoryCount() == 0) || 
-			(candyButtonIsPressed && product.getInventoryCount() == 0) ||
-			(chipsButtonIsPressed && product.getInventoryCount() == 0) ) {
-			return true;
-		}
-		return false;
-	}
-	
-	public boolean paymentIsSufficientAndProductIsInStock(Product product) {
-		if( (isSufficientPayment(coinsInserted, product) && product.getInventoryCount() > 0 && sodaButtonIsPressed) ||
-			(isSufficientPayment(coinsInserted, product) && product.getInventoryCount() > 0 && candyButtonIsPressed)||
-			(isSufficientPayment(coinsInserted, product) && product.getInventoryCount() > 0 && chipsButtonIsPressed)) {
-			return true;
-			}
-		return false;
-	}
-	
-	public boolean productButtonIsPressed() {
-		if(sodaButtonIsPressed || chipsButtonIsPressed || candyButtonIsPressed) {
-			return true;
-		}
-		return false;
-	}
-	
-	/**/
-	
 	public ArrayList<Coin> getCoinsToReturn() {
 		return coinsToReturn;
 	}

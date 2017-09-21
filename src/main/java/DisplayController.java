@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class DisplayController {
 	
-	VendingMachine bankController = new VendingMachine();
+	BankController bank = new BankController();
 	
 	protected boolean sodaButtonIsPressed = false;
 	protected boolean chipsButtonIsPressed = false;
@@ -32,7 +32,7 @@ public class DisplayController {
 	}   
 	
 	protected void checkIfBankChangeIsLow() {
-		if(bankController.quarterBank.isStocked() && bankController.dimeBank.isStocked() && bankController.nickelBank.isStocked() && bankController.pennyBank.isStocked()) {
+		if(bank.quarterBank.isStocked() && bank.dimeBank.isStocked() && bank.nickelBank.isStocked() && bank.pennyBank.isStocked()) {
 			changeBankIsLow = false;
 		} else {
 			changeBankIsLow = true;
@@ -55,7 +55,7 @@ public class DisplayController {
 	}
 	
 	public void vendSelectedProduct(ArrayList<Coin> coins, Product product) {
-		if(bankController.isSufficientPayment(coins, product)) {
+		if(bank.isSufficientPayment(coins, product)) {
 			product.vendItem();
 		}
 	} 
@@ -74,9 +74,9 @@ public class DisplayController {
 	}
 	
 	public boolean paymentIsSufficientAndProductIsInStock(Product product) {
-		if( (bankController.isSufficientPayment(bankController.getCoinsInserted(), product) && product.getInventoryCount() > 0 && sodaButtonIsPressed) ||
-			(bankController.isSufficientPayment(bankController.getCoinsInserted(), product) && product.getInventoryCount() > 0 && candyButtonIsPressed)||
-			(bankController.isSufficientPayment(bankController.getCoinsInserted(), product) && product.getInventoryCount() > 0 && chipsButtonIsPressed)) {
+		if( (bank.isSufficientPayment(bank.getCoinsInserted(), product) && product.getInventoryCount() > 0 && sodaButtonIsPressed) ||
+			(bank.isSufficientPayment(bank.getCoinsInserted(), product) && product.getInventoryCount() > 0 && candyButtonIsPressed)||
+			(bank.isSufficientPayment(bank.getCoinsInserted(), product) && product.getInventoryCount() > 0 && chipsButtonIsPressed)) {
 			return true;
 			}
 		return false;
