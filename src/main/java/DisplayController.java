@@ -7,8 +7,6 @@ public class DisplayController {
 	protected boolean sodaButtonIsPressed = false;
 	protected boolean chipsButtonIsPressed = false;
 	protected boolean candyButtonIsPressed = false;
-
-	protected boolean changeBankIsLow;
 	
 	public String updateDisplay(ArrayList<Coin> coins, Product product) {
 		if(buttonIsPressedAndProductIsOutOfStock(product)) {
@@ -21,7 +19,7 @@ public class DisplayController {
 		if(productButtonIsPressed()) { 
 			return "PRICE " + product.getCostAsString();
 		}
-		if(changeBankIsLow == true) {
+		if(bank.getBankChangeIsLow() == true) {
 			return "EXACT CHANGE ONLY";
 		}
 		if(coins.isEmpty() || coins == null) { 
@@ -29,15 +27,7 @@ public class DisplayController {
 		} else {   
 			return "error"; 
 		}       
-	}   
-	
-	protected void checkIfBankChangeIsLow() {
-		if(bank.quarterBank.isStocked() && bank.dimeBank.isStocked() && bank.nickelBank.isStocked() && bank.pennyBank.isStocked()) {
-			changeBankIsLow = false;
-		} else {
-			changeBankIsLow = true;
-		}
-	}
+	} 
 
 	public String displaySodaCost() {
 		Soda soda = new Soda();

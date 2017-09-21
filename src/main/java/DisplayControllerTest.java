@@ -8,7 +8,7 @@ import org.junit.Test;
 public class DisplayControllerTest {
 	
 	DisplayController underTest;
-	BankController bankController;
+	BankController bank;
 	
 	Quarter quarter = new Quarter();
 	Dime dime = new Dime();
@@ -18,7 +18,7 @@ public class DisplayControllerTest {
 	@Before
 	public void setUp() throws Exception {
 		underTest = new DisplayController();
-		bankController = underTest.bank;
+		bank = underTest.bank;
 	}
 
 	@Test
@@ -53,7 +53,7 @@ public class DisplayControllerTest {
 		Soda soda = new Soda(10);
 		
 		String expected = "PRICE 1.00";
-		assertEquals(expected, underTest.updateDisplay(bankController.getCoinsInserted(), soda)); 
+		assertEquals(expected, underTest.updateDisplay(bank.getCoinsInserted(), soda)); 
 	}
 	
 	@Test
@@ -62,7 +62,7 @@ public class DisplayControllerTest {
 		Chips bagOfChips = new Chips(10);
 		
 		String expected = "PRICE 0.50";
-		assertEquals(expected, underTest.updateDisplay(bankController.getCoinsInserted(), bagOfChips));
+		assertEquals(expected, underTest.updateDisplay(bank.getCoinsInserted(), bagOfChips));
 	} 
 	
 	@Test
@@ -71,16 +71,16 @@ public class DisplayControllerTest {
 		Candy candy = new Candy(10);
 		
 		String expected = "PRICE 0.65";
-		assertEquals(expected, underTest.updateDisplay(bankController.getCoinsInserted(), candy));
+		assertEquals(expected, underTest.updateDisplay(bank.getCoinsInserted(), candy));
 	} 
 	
 	@Test
 	public void shouldReturnInsertCoinStringForInsufficientCoinValue() {
 		Soda cola = new Soda();	
 		String expected = "INSERT COIN";
-		underTest.changeBankIsLow = false;
+		bank.isBankChangeLow = false;
 		
-		assertEquals(expected, underTest.updateDisplay(bankController.getCoinsInserted(), cola));
+		assertEquals(expected, underTest.updateDisplay(bank.getCoinsInserted(), cola));
 	} 
 	
 	@Test
@@ -88,7 +88,7 @@ public class DisplayControllerTest {
 		underTest.sodaButtonIsPressed = true;
 		Soda soda = new Soda(0);
 		String expected = "SOLD OUT";
-		assertEquals(expected, underTest.updateDisplay(bankController.getCoinsInserted(), soda));
+		assertEquals(expected, underTest.updateDisplay(bank.getCoinsInserted(), soda));
 	}
 	
 	@Test
@@ -96,7 +96,7 @@ public class DisplayControllerTest {
 		underTest.candyButtonIsPressed = true;
 		Candy candy = new Candy(0);
 		String expected = "SOLD OUT";
-		assertEquals(expected, underTest.updateDisplay(bankController.getCoinsInserted(), candy));
+		assertEquals(expected, underTest.updateDisplay(bank.getCoinsInserted(), candy));
 	}
 	
 	@Test
@@ -104,14 +104,14 @@ public class DisplayControllerTest {
 		underTest.candyButtonIsPressed = true;
 		Chips bagOfChips = new Chips();
 		String expected = "SOLD OUT";
-		assertEquals(expected, underTest.updateDisplay(bankController.getCoinsInserted(), bagOfChips));
+		assertEquals(expected, underTest.updateDisplay(bank.getCoinsInserted(), bagOfChips));
 	} 
 	
 	@Test
 	public void shouldCheckForSufficentPaymentAndThenReduceSodaInventoryCountByOne() {
 		Soda soda = new Soda(20);
-		bankController.coinsInserted = bankController.queueCoins(quarter, quarter, dime, dime, dime, nickel, nickel, nickel, penny, penny, penny, penny, penny);
-		underTest.vendSelectedProduct(bankController.getCoinsInserted(), soda);
+		bank.coinsInserted = bank.queueCoins(quarter, quarter, dime, dime, dime, nickel, nickel, nickel, penny, penny, penny, penny, penny);
+		underTest.vendSelectedProduct(bank.getCoinsInserted(), soda);
 		
 		int expected = 19;
 		
@@ -121,8 +121,8 @@ public class DisplayControllerTest {
 	@Test
 	public void shouldCheckForSufficentPaymentAndThenReduceCandyInventoryCountByOne() {
 		Candy candy = new Candy(20);
-		bankController.coinsInserted = bankController.queueCoins(quarter, quarter, dime, dime, dime, nickel, nickel, nickel, penny, penny, penny, penny, penny);
-		underTest.vendSelectedProduct(bankController.getCoinsInserted(), candy);
+		bank.coinsInserted = bank.queueCoins(quarter, quarter, dime, dime, dime, nickel, nickel, nickel, penny, penny, penny, penny, penny);
+		underTest.vendSelectedProduct(bank.getCoinsInserted(), candy);
 		
 		int expected = 19;
 		
@@ -132,8 +132,8 @@ public class DisplayControllerTest {
 	@Test
 	public void shouldCheckForSufficentPaymentAndThenReduceChipsInventoryCountByOne() {
 		Chips bagOfChips = new Chips(20);
-		bankController.coinsInserted = bankController.queueCoins(quarter, quarter, dime, dime, dime, nickel, nickel, nickel, penny, penny, penny, penny, penny);
-		underTest.vendSelectedProduct(bankController.getCoinsInserted(), bagOfChips);
+		bank.coinsInserted = bank.queueCoins(quarter, quarter, dime, dime, dime, nickel, nickel, nickel, penny, penny, penny, penny, penny);
+		underTest.vendSelectedProduct(bank.getCoinsInserted(), bagOfChips);
 		
 		int expected = 19;
 		
@@ -144,44 +144,44 @@ public class DisplayControllerTest {
 	public void shouldDisplayThankYouAfterCheckingForSufficientPaymentAndInventoryCountForSoda() {
 		Soda soda = new Soda(10);
 		underTest.sodaButtonIsPressed = true;
-		bankController.coinsInserted = bankController.queueCoins(quarter, quarter, dime, dime, dime, nickel, nickel, nickel, penny, penny, penny, penny, penny);
+		bank.coinsInserted = bank.queueCoins(quarter, quarter, dime, dime, dime, nickel, nickel, nickel, penny, penny, penny, penny, penny);
 		
 		String expected = "THANK YOU";
 		
-		assertEquals(expected, underTest.updateDisplay(bankController.getCoinsInserted(), soda));
+		assertEquals(expected, underTest.updateDisplay(bank.getCoinsInserted(), soda));
 	}
 	
 	@Test 
 	public void shouldDisplayThankYouAfterCheckingForSufficientPaymentAndInventoryCountForCandy() {
 		Candy candy = new Candy(10);
 		underTest.candyButtonIsPressed = true;
-		bankController.coinsInserted = bankController.queueCoins(quarter, quarter, quarter);
+		bank.coinsInserted = bank.queueCoins(quarter, quarter, quarter);
 		
 		String expected = "THANK YOU";
 		
-		assertEquals(expected, underTest.updateDisplay(bankController.getCoinsInserted(), candy));
+		assertEquals(expected, underTest.updateDisplay(bank.getCoinsInserted(), candy));
 	}
 	
 	@Test
 	public void shouldDisplayThankYouAfterCheckingForSufficientPaymentAndInventoryCountForChips() {
 		Chips bagOfChips = new Chips(10);
 		underTest.chipsButtonIsPressed = true;
-		bankController.coinsInserted = bankController.queueCoins(quarter, quarter, quarter);
+		bank.coinsInserted = bank.queueCoins(quarter, quarter, quarter);
 		
 		String expected = "THANK YOU";
 		
-		assertEquals(expected, underTest.updateDisplay(bankController.getCoinsInserted(), bagOfChips));
+		assertEquals(expected, underTest.updateDisplay(bank.getCoinsInserted(), bagOfChips));
 	}
 	
 	@Test
 	public void shouldUpdateDisplayToReadExactChangeWhenChangeBankIsLow() {
-		bankController.coinsInserted = bankController.queueCoins();
+		bank.coinsInserted = bank.queueCoins();
 		Soda soda = new Soda(10);
-		underTest.changeBankIsLow = true;
+		bank.isBankChangeLow= true;
 		
 		String expected = "EXACT CHANGE ONLY";
 		
-		assertEquals(expected, underTest.updateDisplay(bankController.getCoinsInserted(), soda));
+		assertEquals(expected, underTest.updateDisplay(bank.getCoinsInserted(), soda));
 	}
 
 }

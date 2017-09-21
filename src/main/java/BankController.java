@@ -7,17 +7,13 @@ public class BankController {
 	
 	private ArrayList<Coin> coinsToReturn = new ArrayList<Coin>();
 	
-	
-	public ArrayList<Coin> getCoinsInserted() {
-		return coinsInserted;
-	}
 
 	protected QuarterRepository quarterBank = new QuarterRepository();
 	protected DimeRepository dimeBank = new DimeRepository();
 	protected NickelRepository nickelBank = new NickelRepository();
 	protected PennyRepository pennyBank = new PennyRepository();
 
-	protected boolean changeBankIsLow;
+	protected boolean isBankChangeLow;
 	
 	public double identifyCoin(Coin coin) {
 		double size = coin.getSizeInMillimeters();
@@ -151,5 +147,20 @@ public class BankController {
 		return coinsToReturn;
 	}
 	
+	public ArrayList<Coin> getCoinsInserted() {
+		return coinsInserted;
+	}
+	
+	protected void checkIfBankChangeIsLow() {
+		if(quarterBank.isStocked() && dimeBank.isStocked() && nickelBank.isStocked() && pennyBank.isStocked()) {
+			isBankChangeLow = false;
+		} else {
+			isBankChangeLow = true;
+		}
+	}
+	
+	public boolean getBankChangeIsLow() {
+		return isBankChangeLow;
+	}
 	 
 }
