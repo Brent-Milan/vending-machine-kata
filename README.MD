@@ -5,7 +5,8 @@
 2. Additional Framework(s): JUnit 4
 3. IDE: Eclipse
 4. Approach: Test-Driven Design (TDD)
-5. Dependencies: [Link to Raw build.gradle file]()
+5. Dependencies: [Link to Raw build.gradle file](https://raw.githubusercontent.com/Brent-Milan/vending-machine-kata/master/build.gradle)
+6. To test: run /.gradlew
 
 ## Description:
 
@@ -21,10 +22,12 @@ Quick description of key classes in this project:
 
 4. Coin repository: various classes that represent the coin queues the vending machine bank will use to house Coin inventory for change.
 
-At one point, BankController and DisplayController were one very bloated class named 'VendingMachine', but it was responsible for far too many things and exceedingly complex, so I performed a large refactor on the project to unmarry the logic into two separate classes with clarified roles. 
+At one point, BankController and DisplayController were one very bloated class named 'VendingMachine', but it was responsible for far too many things and exceedingly complex, so I performed a large refactor on the project to unmarry the logic into two separate classes with clarified roles and dedicated test classes. 
 
-#Ideas for Further Improvement
+## Ideas for Further Improvement
 
 BankController and DisplayController could be broken down further to even smaller, concise classes.
+
+BankControllerTest still includes many vestiges of logic before I created subclasses of Coin. I can eliminate some bloat in it by refactoring it to simply use Quarter, Dime, and other subclasses instead of Coin objects with specific parameters. 
 
 

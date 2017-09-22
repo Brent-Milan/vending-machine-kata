@@ -7,7 +7,6 @@ public class BankController {
 	
 	private ArrayList<Coin> coinsToReturn = new ArrayList<Coin>();
 	
-
 	protected QuarterRepository quarterBank = new QuarterRepository();
 	protected DimeRepository dimeBank = new DimeRepository();
 	protected NickelRepository nickelBank = new NickelRepository();
