@@ -28,7 +28,7 @@ At one point, BankController and DisplayController were one very bloated class n
 
 Coin object updated. No longer a superclass, but instead has methods to instantiate itself with attributes indentifying it as a quarter, dime, etc. All redundant subclasses eliminated. 
 
-All repository classes reworked to a single Coin repository in light of the demise of the Coin subclasses -- eliminating further redundancy.
+All repository classes reworked to a single Coin repository after the demise of the Coin subclasses.
 
 Project is now much slimmer and all remaining tests are back in the green.
 
