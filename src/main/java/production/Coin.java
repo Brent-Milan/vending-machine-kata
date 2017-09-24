@@ -20,6 +20,12 @@ public class Coin {
 	
 	public double getWeightInGrams() {
 		return weightInGrams;
+	}
+
+	public Coin createQuarter() {
+		return new Coin(24.26, 5.67);
 	}  
+	
+	
 
 }
