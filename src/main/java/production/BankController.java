@@ -3,9 +3,10 @@ import java.util.ArrayList;
 import java.util.List; 
 
 public class BankController {
+	
+	Coin coin = new Coin();
 
 	protected ArrayList<Coin> coinsInserted = new ArrayList<Coin>();
-	
 	private ArrayList<Coin> coinsToReturn = new ArrayList<Coin>();
 	
 	protected QuarterRepository quarterBank = new QuarterRepository();
@@ -89,7 +90,7 @@ public class BankController {
 
 	private double removePennyFromBankAndReturnAsChange(double difference) {
 		pennyBank.remove(0);
-		Penny penny = new Penny();
+		Coin penny = coin.createPenny();
 		coinsToReturn.add(penny);
 		difference -= 0.05;
 		return difference;
@@ -97,7 +98,7 @@ public class BankController {
 
 	private double removeNickelFromBankAndReturnAsChange(double difference) {
 		nickelBank.remove(0);
-		Nickel nickel = new Nickel();
+		Coin nickel = coin.createNickel();
 		coinsToReturn.add(nickel);
 		difference -= 0.05;
 		return difference;
@@ -105,7 +106,7 @@ public class BankController {
 
 	private double removeDimeFromBankAndReturnAsChange(double difference) {
 		dimeBank.remove(0);
-		Dime dime = new Dime();
+		Coin dime = coin.createDime();;
 		coinsToReturn.add(dime);
 		difference -= 0.1;
 		return difference;
@@ -113,7 +114,7 @@ public class BankController {
 
 	private double removeQuarterFromBankAndReturnAsChange(double difference) {
 		quarterBank.remove(0);
-		Quarter quarter = new Quarter();
+		Coin quarter = coin.createQuarter();
 		coinsToReturn.add(quarter);
 		difference -= 0.25;
 		return difference;

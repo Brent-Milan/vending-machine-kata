@@ -184,7 +184,6 @@ public class BankControllerTest {
 	
 	private ArrayList<Coin> createArrayWithOneOfEachCoinType() {
 		ArrayList<Coin> coins = new ArrayList<Coin>(); 
-		
 
 		coins.add(penny);
 		coins.add(nickel);
