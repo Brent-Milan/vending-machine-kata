@@ -1,25 +1,25 @@
 package production;
 import java.util.ArrayList;
 
-public class PennyRepository {
-	ArrayList<Coin> pennyRepo = new ArrayList<Coin>();
+public class CoinRepository {
+	ArrayList<Coin> coinRepo = new ArrayList<Coin>();
 
 	public ArrayList<Coin> getPennyRepo() {
-		return pennyRepo;
+		return coinRepo;
 	}
 	
 	public void remove(Object object) {
-		pennyRepo.remove(object);
+		coinRepo.remove(object);
 	}
 	
 	public ArrayList<Coin> stockPenniesInBank(Coin... penniesAsArray) {
 		for(int index = 0; index < penniesAsArray.length; index++) {
-			pennyRepo.add(penniesAsArray[index]);
+			coinRepo.add(penniesAsArray[index]);
 		}
-		return pennyRepo;
+		return coinRepo;
 	}
 
 	protected boolean isStocked() {
-		return pennyRepo.size() > 8;
+		return coinRepo.size() > 8;
 	}
 }

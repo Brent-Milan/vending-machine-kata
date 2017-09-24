@@ -9,12 +9,12 @@ import org.junit.Test;
 
 public class PennyReposoitoryTest {
 	
-	private PennyRepository underTest;
+	private CoinRepository underTest;
 	private	Coin penny = new Coin();
 
 	@Before
 	public void setUp() throws Exception {
-		underTest = new PennyRepository();
+		underTest = new CoinRepository();
 		penny = penny.createPenny();
 	}
 
@@ -24,7 +24,7 @@ public class PennyReposoitoryTest {
 		
 		int expected = 3;
 		
-		assertEquals(expected, countPennies(underTest.pennyRepo));
+		assertEquals(expected, countPennies(underTest.coinRepo));
 	}
 
 	@Test
@@ -34,7 +34,7 @@ public class PennyReposoitoryTest {
 		underTest.remove(penny);
 		int expected = 2;
 		
-		assertEquals(expected, countPennies(underTest.pennyRepo));
+		assertEquals(expected, countPennies(underTest.coinRepo));
 	}
 	
 	@Test

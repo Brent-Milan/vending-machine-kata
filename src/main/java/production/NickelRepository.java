@@ -3,21 +3,17 @@ import java.util.ArrayList;
 
 public class NickelRepository {
 	
-	ArrayList<Nickel> nickelRepo = new ArrayList<Nickel>();
+	ArrayList<Coin> nickelRepo = new ArrayList<Coin>();
 
 	public ArrayList<Nickel> getNickelRepo() {
 		return nickelRepo;
 	}
 
-	public void remove(int indexOfElementToRemove) {
-		for(int index = 0; index < nickelRepo.size(); index++) {
-			if(index == indexOfElementToRemove) {
-				nickelRepo.remove(index);
-			} 
-		}
+	public void remove(Object object) {
+		nickelRepo.remove(object);
 	}
 
-	public ArrayList<Nickel> stockNickelsInBank(Nickel... nickelsAsArray) {
+	public ArrayList<Coin> stockNickelsInBank(Coin... nickelsAsArray) {
 		for(int index = 0; index < nickelsAsArray.length; index++) {
 		nickelRepo.add(nickelsAsArray[index]);
 		}
