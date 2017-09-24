@@ -7,7 +7,7 @@ import java.util.Collections;
 import org.junit.Before;
 import org.junit.Test;
 
-public class PennyReposoitoryTest {
+public class CoinRepositoryTest {
 	
 	private CoinRepository underTest;
 	private	Coin penny = new Coin();
