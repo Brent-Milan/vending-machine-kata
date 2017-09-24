@@ -9,12 +9,13 @@ import org.junit.Test;
 public class DisplayControllerTest {
 	
 	DisplayController underTest;
-	BankController bank;
 	
-	Quarter quarter = new Quarter();
-	Dime dime = new Dime();
-	Nickel nickel = new Nickel();
-	Penny penny = new Penny();;
+	BankController bank;
+	Coin coin = new Coin();
+	Coin quarter = coin.createQuarter();
+	Coin dime = coin.createDime();
+	Coin nickel = coin.createNickel();
+	Coin penny = coin.createPenny();
 
 	@Before
 	public void setUp() throws Exception {
