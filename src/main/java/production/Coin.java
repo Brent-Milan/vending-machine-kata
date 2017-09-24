@@ -24,6 +24,10 @@ public class Coin {
 
 	public Coin createQuarter() {
 		return new Coin(24.26, 5.67);
+	}
+
+	public Coin createDime() {
+		return new Coin(17.91, 2.268);
 	}  
 	
 	

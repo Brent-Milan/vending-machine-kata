@@ -22,5 +22,12 @@ public class CoinTest {
 		
 		assertEquals(0.25, bank.identifyCoin(quarter), 0.001);
 	}
+	
+	@Test
+	public void shouldReturnACoinWithDimeAttributes() {
+		Coin dime = underTest.createDime();
+		
+		assertEquals(0.1, bank.identifyCoin(dime), 0.001);
+	}
 
 }
