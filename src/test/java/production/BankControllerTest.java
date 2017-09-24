@@ -21,7 +21,6 @@ public class BankControllerTest {
 	@Before
 	public void setUp() throws Exception {
 		underTest = new BankController();
-		
 	}
 
 	@Test
