@@ -18,9 +18,9 @@ Quick description of key classes in this project:
 
 2. DisplayController:  all logic associated with updating the notification display on the vending machine.
 
-3. Coin object: superclass of specific coin objects such as Quarter, Dime, etc. Does not know value, only has attributes.
+3. Coin object: (updated) a simple object representing a coin. Has size and diameter attributes, but value is determined by the machine (specifically the BankController class) identifying each object.
 
-4. Coin repository: various classes that represent the coin queues the vending machine bank will use to house Coin inventory for change.
+4. CoinRepository: (updated) formerly multiple classes that held instances of Coin objects. Simplified to a single repository class that can instantiated to hold an inventory of Coin objects.
 
 At one point, BankController and DisplayController were one very bloated class named 'VendingMachine', but it was responsible for far too many things and exceedingly complex, so I performed a large refactor on the project to unmarry the logic into two separate classes with clarified roles and dedicated test classes. 
 
@@ -29,5 +29,13 @@ At one point, BankController and DisplayController were one very bloated class n
 BankController and DisplayController could be broken down further to even smaller, concise classes.
 
 BankControllerTest still includes many vestiges of logic before I created subclasses of Coin. I can eliminate some bloat in it by refactoring it to simply use Quarter, Dime, and other subclasses instead of Coin objects with specific parameters. 
+
+## 9/24 Update:
+
+Coin object updated. No longer a superclass, but instead has methods to instantiate itself with attributes indentifying it as a quarter, dime, etc. All redundant subclasses eliminated. 
+
+All repository classes reworked to a single Coin repository in light of the demise of the Coin subclasses -- eliminating further redundancy.
+
+Project is now much slimmer and all remaining tests are back in the green.
 
 
