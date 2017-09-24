@@ -24,12 +24,6 @@ Quick description of key classes in this project:
 
 At one point, BankController and DisplayController were one very bloated class named 'VendingMachine', but it was responsible for far too many things and exceedingly complex, so I performed a large refactor on the project to unmarry the logic into two separate classes with clarified roles and dedicated test classes. 
 
-## Ideas for Further Improvement
-
-BankController and DisplayController could be broken down further to even smaller, concise classes.
-
-BankControllerTest still includes many vestiges of logic before I created subclasses of Coin. I can eliminate some bloat in it by refactoring it to simply use Quarter, Dime, and other subclasses instead of Coin objects with specific parameters. 
-
 ## 9/24 Update:
 
 Coin object updated. No longer a superclass, but instead has methods to instantiate itself with attributes indentifying it as a quarter, dime, etc. All redundant subclasses eliminated. 
