@@ -9,30 +9,30 @@ import org.junit.Test;
 public class BankControllerTest {
 	
 	private BankController underTest;
+	Coin coin = new Coin();
 	
 	ArrayList<Coin> coinsInserted = new ArrayList<Coin>();
 	
-	Coin penny = generatePenny();
-	Coin nickel = generateNickel();
-	Coin dime = generateDime();
-	Coin quarter = generateQuarter();
+	Coin penny = coin.createPenny();
+	Coin nickel = coin.createNickel();
+	Coin dime = coin.createDime();
+	Coin quarter = coin.createQuarter();
 
 	@Before
 	public void setUp() throws Exception {
 		underTest = new BankController();
+		
 	}
 
 	@Test
 	public void shouldReturnQuarterValue() {
-		Coin quarter = generateQuarter();
 		double expected = 0.25;
 		
 		assertEquals(expected, underTest.identifyCoin(quarter), 0);
 	}
 	
 	@Test 
-	public void shouldReturnDimeValue() {
-		Coin dime = generateDime(); 	
+	public void shouldReturnDimeValue() {	
 		double expected = 0.10;
 		
 		assertEquals(expected, underTest.identifyCoin(dime), 0);
@@ -40,7 +40,6 @@ public class BankControllerTest {
 	 
 	@Test
 	public void shouldReturnNickelValue() {
-		Coin nickel = generateNickel();
 		double expected = .05;
 		
 		assertEquals(expected, underTest.identifyCoin(nickel), 0);
@@ -48,7 +47,6 @@ public class BankControllerTest {
 	
 	@Test
 	public void shouldReturnPennyValue() {
-		Coin penny = generatePenny();
 		double expected = 0.01;
 		
 		assertEquals(expected, underTest.identifyCoin(penny), 0);
@@ -184,34 +182,10 @@ public class BankControllerTest {
 		assertEquals(expectedCoinsValue, result, 0.01);
 	}
 	
-	private Coin generateQuarter() {
-		Coin quarter = new Coin(24.26, 5.67);
-		return quarter;
-	}
-
-	private Coin generateDime() {
-		Coin dime = new Coin(17.91, 2.268);
-		return dime;
-	}
-
-	private Coin generateNickel() {
-		Coin nickel = new Coin(21.21, 5.0);
-		return nickel;
-	}
-
-	private Coin generatePenny() {
-		Coin penny = new Coin(19.05, 2.5);
-		return penny;
-	}
-	
 	private ArrayList<Coin> createArrayWithOneOfEachCoinType() {
 		ArrayList<Coin> coins = new ArrayList<Coin>(); 
 		
-		Coin penny = generatePenny();
-		Coin nickel = generateNickel();
-		Coin dime = generateDime();
-		Coin quarter = generateQuarter();
-		
+
 		coins.add(penny);
 		coins.add(nickel);
 		coins.add(dime);
