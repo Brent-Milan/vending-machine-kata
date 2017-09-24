@@ -28,6 +28,10 @@ public class Coin {
 
 	public Coin createDime() {
 		return new Coin(17.91, 2.268);
+	}
+
+	public Coin createNickel() {
+		return new Coin(21.21, 5.0);
 	}  
 	
 	
