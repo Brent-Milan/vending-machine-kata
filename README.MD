@@ -20,7 +20,7 @@ Quick description of key classes in this project:
 
 3. Coin object: (updated) a simple object representing a coin. Has size and diameter attributes, but value is determined by the machine (specifically the BankController class) identifying each object.
 
-4. CoinRepository: (updated) formerly multiple classes that held instances of Coin objects. Simplified to a single repository class that can instantiated to hold an inventory of Coin objects.
+4. CoinRepository: (updated) formerly multiple classes that held instances of Coin subclasses. Simplified to a single repository class that holds Coin objects. BankController uses multiple instances of this for different Coin denominations and inventories.
 
 At one point, BankController and DisplayController were one very bloated class named 'VendingMachine', but it was responsible for far too many things and exceedingly complex, so I performed a large refactor on the project to unmarry the logic into two separate classes with clarified roles and dedicated test classes. 
 
