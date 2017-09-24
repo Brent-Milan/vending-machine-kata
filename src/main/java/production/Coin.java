@@ -6,7 +6,6 @@ public class Coin {
 	private double weightInGrams;
 	
 	public Coin() {
-		
 	}
 	
 	public Coin(double sizeInMillimeters, double weightInGrams) {
@@ -38,6 +37,4 @@ public class Coin {
 		return new Coin(19.05, 2.5);
 	}  
 	
-	
-
 }

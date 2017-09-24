@@ -7,15 +7,15 @@ import java.util.Collections;
 import org.junit.Before;
 import org.junit.Test;
 
-public class PennyReposoitoryTest {
+public class CoinRepositoryTest {
 	
-	private PennyRepository underTest;
-	private	Penny penny;
+	private CoinRepository underTest;
+	private	Coin penny = new Coin();
 
 	@Before
 	public void setUp() throws Exception {
-		underTest = new PennyRepository();
-		penny = new Penny();
+		underTest = new CoinRepository();
+		penny = penny.createPenny();
 	}
 
 	@Test
@@ -24,17 +24,17 @@ public class PennyReposoitoryTest {
 		
 		int expected = 3;
 		
-		assertEquals(expected, countPennies(underTest.pennyRepo));
+		assertEquals(expected, countPennies(underTest.coinRepo));
 	}
 
 	@Test
 	public void shouldReturnAFrequencyof2() {
 		underTest.stockPenniesInBank(penny, penny, penny);
 		
-		underTest.remove(0);
+		underTest.remove(penny);
 		int expected = 2;
 		
-		assertEquals(expected, countPennies(underTest.pennyRepo));
+		assertEquals(expected, countPennies(underTest.coinRepo));
 	}
 	
 	@Test
@@ -44,7 +44,7 @@ public class PennyReposoitoryTest {
 		assertEquals(false, underTest.isStocked());
 	}
 
-	public int countPennies(ArrayList<Penny> pennies) {
+	public int countPennies(ArrayList<Coin> pennies) {
 		return Collections.frequency(pennies, penny);
 	}
 }

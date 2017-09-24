@@ -9,10 +9,10 @@ public class BankController {
 	protected ArrayList<Coin> coinsInserted = new ArrayList<Coin>();
 	private ArrayList<Coin> coinsToReturn = new ArrayList<Coin>();
 	
-	protected QuarterRepository quarterBank = new QuarterRepository();
-	protected DimeRepository dimeBank = new DimeRepository();
-	protected NickelRepository nickelBank = new NickelRepository();
-	protected PennyRepository pennyBank = new PennyRepository();
+	protected CoinRepository quarterBank = new CoinRepository();
+	protected CoinRepository dimeBank = new CoinRepository();
+	protected CoinRepository nickelBank = new CoinRepository();
+	protected CoinRepository pennyBank = new CoinRepository();
 
 	protected boolean isBankChangeLow;
 	
