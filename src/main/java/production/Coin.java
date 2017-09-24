@@ -32,6 +32,10 @@ public class Coin {
 
 	public Coin createNickel() {
 		return new Coin(21.21, 5.0);
+	}
+
+	public Coin createPenny() {
+		return new Coin(19.05, 2.5);
 	}  
 	
 	

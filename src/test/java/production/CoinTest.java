@@ -36,5 +36,12 @@ public class CoinTest {
 		
 		assertEquals(0.05, bank.identifyCoin(nickel), 0.001);
 	}
+	
+	@Test
+	public void shouldReturnACoinWithPennyAttributes() {
+		Coin penny = underTest.createPenny();
+		
+		assertEquals(0.01, bank.identifyCoin(penny), 0.001);
+	}
 
 }
